@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
+import org.dromara.autotable.annotation.AutoTable;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -18,6 +19,7 @@ import java.time.LocalDateTime;
  *
  * @author 芋道源码
  */
+@AutoTable("wms_shipment_order")
 @TableName("wms_shipment_order")
 @KeySequence("wms_shipment_order_seq")
 @Data

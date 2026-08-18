@@ -212,6 +212,10 @@ logging:
     cn.iocoder.yudao.module.ai.dal.mysql: debug
     cn.iocoder.yudao.module.im.dal.mysql: debug
     org.springframework.context.support.PostProcessorRegistrationDelegate: ERROR # TODO 芋艿：先禁用，Spring Boot 3.X 存在部分错误的 WARN 提示
+    org.dromara.autotable: debug
+
+    #
+#    cn.iocoder.yudao.module.wms.mapper: debug
 
 debug: false
 
@@ -296,3 +300,25 @@ justauth:
     type: REDIS
     prefix: 'social_auth_state:' # 缓存前缀，目前只对 Redis 缓存生效，默认 JUSTAUTH::STATE::
     timeout: 24h # 超时时长，目前只对 Redis 缓存生效，默认 3 分钟
+
+auto-table:
+  # 1. 是否开启 AutoTable 动态表结构维护功能
+  enable: true
+  # 2. 运行模式:
+  # - update   : 增量修改（开发环境推荐：新增表/列/索引，修改列类型/注释）
+  # - add      : 仅新增（测试/生产推荐：只做新增表和列，绝不改动或删除现有结构）
+  # - validate : 校验模式（仅对比输出差异，不修改数据库）
+  # - create   : 重建模式（⚠️ 每次启动清空原表重建，仅用于单元测试！）
+  # - none     : 禁用
+  mode: update
+  # 3. 扫描实体类的包路径（⚠️ 直接写明具体包名，解决之前的 PatternSyntaxException 占位符报错）
+  # 如需扫描多个包，可以使用逗号分隔，如："cn.iocoder.yudao.module.system,cn.iocoder.yudao.module.wms"
+  model-package: ${yudao.info.base-package}.module
+  # 4. 显式指定数据库类型（跳过自动识别，可选值：mysql, pgsql, oracle, sqlserver, sqlite, dm, h2）
+  db-type: mysql
+  # 5. 结构安全控制
+  # 是否删除实体类中已不存在的数据库字段（⚠️ 强烈建议保持 false，防止误删除数据库已有列及数据）
+  auto-drop-column: false
+  # 6. 控制台控制
+  show-banner: true
+  show-sql: true

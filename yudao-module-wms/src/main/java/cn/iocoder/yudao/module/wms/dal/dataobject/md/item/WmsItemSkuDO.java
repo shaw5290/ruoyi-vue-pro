@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
+import org.dromara.autotable.annotation.AutoTable;
 
 import java.math.BigDecimal;
 
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
  *
  * @author 芋道源码
  */
+@AutoTable("wms_item_sku")
 @TableName("wms_item_sku")
 @KeySequence("wms_item_sku_seq")
 @Data

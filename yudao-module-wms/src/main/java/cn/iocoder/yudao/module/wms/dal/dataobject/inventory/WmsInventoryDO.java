@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
+import org.dromara.autotable.annotation.AutoTable;
+import org.dromara.autotable.annotation.PrimaryKey;
 
 import java.math.BigDecimal;
 
@@ -15,6 +17,7 @@ import java.math.BigDecimal;
  *
  * @author 芋道源码
  */
+@AutoTable("wms_inventory")
 @TableName("wms_inventory")
 @KeySequence("wms_inventory_seq")
 @Data

@@ -5,12 +5,14 @@ import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
+import org.dromara.autotable.annotation.AutoTable;
 
 /**
  * WMS 商品 DO
  *
  * @author 芋道源码
  */
+@AutoTable("wms_item")
 @TableName("wms_item")
 @KeySequence("wms_item_seq")
 @Data
