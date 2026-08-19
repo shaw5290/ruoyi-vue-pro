@@ -13,7 +13,6 @@ import org.dromara.autotable.annotation.AutoTable;
  *
  * @author 芋道源码
  */
-@AutoTable("wms_merchant")
 @TableName("wms_merchant")
 @KeySequence("wms_merchant_seq")
 @Data

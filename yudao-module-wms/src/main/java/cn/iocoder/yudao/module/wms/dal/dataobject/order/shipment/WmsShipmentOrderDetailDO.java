@@ -16,7 +16,6 @@ import java.math.BigDecimal;
  *
  * @author 芋道源码
  */
-@AutoTable("wms_shipment_order_detail")
 @TableName("wms_shipment_order_detail")
 @KeySequence("wms_shipment_order_detail_seq")
 @Data

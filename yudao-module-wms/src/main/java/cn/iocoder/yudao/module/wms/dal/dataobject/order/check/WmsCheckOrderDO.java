@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
  *
  * @author 芋道源码
  */
-@AutoTable("wms_check_order")
 @TableName("wms_check_order")
 @KeySequence("wms_check_order_seq")
 @Data

@@ -12,7 +12,6 @@ import org.dromara.autotable.annotation.AutoTable;
  *
  * @author 芋道源码
  */
-@AutoTable("wms_item")
 @TableName("wms_item")
 @KeySequence("wms_item_seq")
 @Data

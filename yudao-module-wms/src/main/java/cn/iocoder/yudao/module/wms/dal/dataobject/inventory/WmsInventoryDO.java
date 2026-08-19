@@ -17,7 +17,7 @@ import java.math.BigDecimal;
  *
  * @author 芋道源码
  */
-@AutoTable("wms_inventory")
+@AutoTable
 @TableName("wms_inventory")
 @KeySequence("wms_inventory_seq")
 @Data
@@ -31,6 +31,7 @@ public class WmsInventoryDO extends BaseDO {
     /**
      * 主键编号
      */
+    @PrimaryKey(autoIncrement = true)
     @TableId
     private Long id;
     /**
