@@ -212,6 +212,10 @@ logging:
     cn.iocoder.yudao.module.ai.dal.mysql: debug
     cn.iocoder.yudao.module.im.dal.mysql: debug
     org.springframework.context.support.PostProcessorRegistrationDelegate: ERROR # TODO 芋艿：先禁用，Spring Boot 3.X 存在部分错误的 WARN 提示
+    org.dromara.autotable: debug
+
+    #
+#    cn.iocoder.yudao.module.wms.mapper: debug
 
 debug: false
 
@@ -296,3 +300,9 @@ justauth:
     type: REDIS
     prefix: 'social_auth_state:' # 缓存前缀，目前只对 Redis 缓存生效，默认 JUSTAUTH::STATE::
     timeout: 24h # 超时时长，目前只对 Redis 缓存生效，默认 3 分钟
+
+auto-table:
+  enable: true
+  mode: update
+  model-package: ${yudao.info.base-package}.module
+  strict-extends: false
