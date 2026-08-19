@@ -84,6 +84,7 @@
         <weixin-java.version>4.8.4-20260623.211820</weixin-java.version>
         <bouncycastle.version>1.80</bouncycastle.version>
         <alipay-sdk-java.version>4.40.865.ALL</alipay-sdk-java.version>
+        <auto-table.version>2.6.5</auto-table.version>
     </properties>
 
     <dependencyManagement>
@@ -758,6 +759,14 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+
+            <!--Auto Table-->
+            <dependency>
+                <groupId>org.dromara.autotable</groupId>
+                <artifactId>auto-table-adapter-mybatis-plus-spring-boot-starter</artifactId>
+                <version>${auto-table.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

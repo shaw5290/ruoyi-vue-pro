@@ -106,6 +106,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Auto Table-->
+        <dependency>
+            <groupId>org.dromara.autotable</groupId>
+            <artifactId>auto-table-adapter-mybatis-plus-spring-boot-starter</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
