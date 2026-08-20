@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.dromara.autotable.annotation.ColumnDefault;
+import org.dromara.autotable.annotation.ColumnNotNull;
 import org.dromara.core.trans.vo.TransPojo;
 import lombok.Data;
 import org.apache.ibatis.type.JdbcType;
@@ -51,6 +53,9 @@ public abstract class BaseDO implements Serializable, TransPojo {
      * 是否删除
      */
     @TableLogic
+    @TableField(fill = FieldFill.INSERT)
+    @ColumnDefault("0")
+    @ColumnNotNull
     private Boolean deleted;
 
     /**

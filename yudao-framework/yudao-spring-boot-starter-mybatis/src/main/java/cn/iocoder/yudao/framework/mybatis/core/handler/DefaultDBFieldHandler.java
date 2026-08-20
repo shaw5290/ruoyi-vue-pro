@@ -42,6 +42,10 @@ public class DefaultDBFieldHandler implements MetaObjectHandler {
             if (Objects.nonNull(userId) && Objects.isNull(baseDO.getUpdater())) {
                 baseDO.setUpdater(userId.toString());
             }
+            // 逻辑删除字段为空时，按“未删除”写入，避免依赖数据库默认值
+            if (Objects.isNull(baseDO.getDeleted())) {
+                baseDO.setDeleted(false);
+            }
         }
     }
 
