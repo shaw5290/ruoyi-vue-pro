@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.iot.dal.dataobject.device;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -18,7 +18,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class IotDeviceGroupDO extends BaseDO {
+public class IotDeviceGroupDO extends TenantBaseDO {
 
     /**
      * 分组 ID

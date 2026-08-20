@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.wm.miscissue;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.md.item.MesMdItemDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.wm.batch.MesWmBatchDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.wm.warehouse.MesWmWarehouseAreaDO;
@@ -25,7 +25,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesWmMiscIssueLineDO extends BaseDO {
+public class MesWmMiscIssueLineDO extends TenantBaseDO {
 
     /**
      * 编号

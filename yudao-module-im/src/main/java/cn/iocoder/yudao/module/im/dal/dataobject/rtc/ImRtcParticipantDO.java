@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.im.dal.dataobject.rtc;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.im.enums.rtc.ImRtcParticipantRoleEnum;
 import cn.iocoder.yudao.module.im.enums.rtc.ImRtcParticipantStatusEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -28,7 +28,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ImRtcParticipantDO extends BaseDO {
+public class ImRtcParticipantDO extends TenantBaseDO {
 
     /**
      * 编号

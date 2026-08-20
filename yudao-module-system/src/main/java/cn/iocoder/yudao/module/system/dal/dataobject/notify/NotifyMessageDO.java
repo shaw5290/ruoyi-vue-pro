@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.system.dal.dataobject.notify;
 
 import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -28,7 +28,7 @@ import org.dromara.autotable.annotation.ColumnType;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class NotifyMessageDO extends BaseDO {
+public class NotifyMessageDO extends TenantBaseDO {
 
     /**
      * 站内信编号，自增

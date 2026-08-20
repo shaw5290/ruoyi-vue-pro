@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.hrm.dal.dataobject.employee.info;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.hrm.dal.dataobject.recruit.candidate.HrmRecruitCandidateDO;
 import cn.iocoder.yudao.module.hrm.dal.dataobject.recruit.config.HrmRecruitChannelDO;
 import cn.iocoder.yudao.module.hrm.enums.DictTypeConstants;
@@ -38,7 +38,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HrmEmployeeDO extends BaseDO {
+public class HrmEmployeeDO extends TenantBaseDO {
 
     /**
      * 员工编号

@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.wm.salesnotice;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.md.client.MesMdClientDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -22,7 +22,7 @@ import cn.iocoder.yudao.module.mes.enums.DictTypeConstants;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesWmSalesNoticeDO extends BaseDO {
+public class MesWmSalesNoticeDO extends TenantBaseDO {
 
     /**
      * 编号

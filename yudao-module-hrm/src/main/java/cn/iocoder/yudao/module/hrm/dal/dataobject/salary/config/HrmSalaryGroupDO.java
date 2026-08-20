@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.hrm.dal.dataobject.salary.config;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.hrm.dal.dataobject.employee.info.HrmEmployeeDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.DeptDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -32,7 +32,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HrmSalaryGroupDO extends BaseDO {
+public class HrmSalaryGroupDO extends TenantBaseDO {
 
     /**
      * 默认月计薪天数

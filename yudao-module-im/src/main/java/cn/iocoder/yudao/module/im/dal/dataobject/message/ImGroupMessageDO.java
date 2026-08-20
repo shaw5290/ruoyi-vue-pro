@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.im.dal.dataobject.message;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.framework.mybatis.core.type.LongListTypeHandler;
 import cn.iocoder.yudao.module.im.dal.dataobject.group.ImGroupDO;
 import cn.iocoder.yudao.module.im.enums.message.ImMessageReceiptStatusEnum;
@@ -29,7 +29,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ImGroupMessageDO extends BaseDO {
+public class ImGroupMessageDO extends TenantBaseDO {
 
     /**
      * 编号

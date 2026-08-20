@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.pro.andon;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.md.workstation.MesMdWorkstationDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.pro.process.MesProProcessDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.pro.workorder.MesProWorkOrderDO;
@@ -28,7 +28,7 @@ import cn.iocoder.yudao.module.mes.enums.DictTypeConstants;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesProAndonRecordDO extends BaseDO {
+public class MesProAndonRecordDO extends TenantBaseDO {
 
     /**
      * 编号

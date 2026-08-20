@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.hrm.dal.dataobject.performance.plan;
 
 import cn.iocoder.yudao.module.hrm.dal.dataobject.performance.config.HrmPerformanceAssessmentTemplateDO;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.hrm.dal.dataobject.employee.info.HrmEmployeeDO;
 import cn.iocoder.yudao.module.hrm.dal.dataobject.performance.config.HrmPerformanceResultTemplateDO.Level;
 import cn.iocoder.yudao.module.hrm.enums.employee.info.HrmEmployeeStatusEnum;
@@ -48,7 +48,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HrmPerformancePlanDO extends BaseDO {
+public class HrmPerformancePlanDO extends TenantBaseDO {
 
     /**
      * 计划编号

@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.erp.dal.dataobject.sale;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.erp.dal.dataobject.product.ErpProductDO;
 import cn.iocoder.yudao.module.erp.dal.dataobject.stock.ErpWarehouseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -24,7 +24,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErpSaleReturnItemDO extends BaseDO {
+public class ErpSaleReturnItemDO extends TenantBaseDO {
 
     /**
      * 编号

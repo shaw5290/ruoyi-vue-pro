@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.crm.dal.dataobject.permission;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.crm.enums.common.CrmBizTypeEnum;
 import cn.iocoder.yudao.module.crm.enums.permission.CrmPermissionLevelEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -22,7 +22,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CrmPermissionDO extends BaseDO {
+public class CrmPermissionDO extends TenantBaseDO {
 
     /**
      * 编号，主键自增

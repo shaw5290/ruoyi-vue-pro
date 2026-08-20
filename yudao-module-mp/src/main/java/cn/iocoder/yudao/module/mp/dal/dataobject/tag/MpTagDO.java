@@ -4,7 +4,7 @@ import cn.iocoder.yudao.module.mp.dal.dataobject.account.MpAccountDO;
 import lombok.*;
 
 import com.baomidou.mybatisplus.annotation.*;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import me.chanjar.weixin.mp.bean.tag.WxUserTag;
@@ -22,7 +22,7 @@ import me.chanjar.weixin.mp.bean.tag.WxUserTag;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MpTagDO extends BaseDO {
+public class MpTagDO extends TenantBaseDO {
 
     /**
      * 主键

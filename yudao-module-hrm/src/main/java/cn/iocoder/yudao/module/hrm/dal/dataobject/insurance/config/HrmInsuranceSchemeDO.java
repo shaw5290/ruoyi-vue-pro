@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.hrm.dal.dataobject.insurance.config;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.hrm.enums.insurance.config.HrmInsuranceSchemeTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -26,7 +26,7 @@ import lombok.ToString;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HrmInsuranceSchemeDO extends BaseDO {
+public class HrmInsuranceSchemeDO extends TenantBaseDO {
 
     /**
      * 编号

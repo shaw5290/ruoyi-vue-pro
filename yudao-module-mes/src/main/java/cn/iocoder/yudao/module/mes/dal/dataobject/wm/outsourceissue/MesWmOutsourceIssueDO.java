@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.wm.outsourceissue;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.md.vendor.MesMdVendorDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.pro.workorder.MesProWorkOrderDO;
 import cn.iocoder.yudao.module.mes.enums.wm.MesWmOutsourceIssueStatusEnum;
@@ -26,7 +26,7 @@ import cn.iocoder.yudao.module.mes.enums.DictTypeConstants;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesWmOutsourceIssueDO extends BaseDO {
+public class MesWmOutsourceIssueDO extends TenantBaseDO {
 
     /**
      * 发料单ID

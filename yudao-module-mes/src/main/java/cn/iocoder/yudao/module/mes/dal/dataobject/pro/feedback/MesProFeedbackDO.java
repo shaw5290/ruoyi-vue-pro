@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.pro.feedback;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.md.item.MesMdItemDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.md.workstation.MesMdWorkstationDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.pro.route.MesProRouteDO;
@@ -31,7 +31,7 @@ import cn.iocoder.yudao.module.mes.enums.DictTypeConstants;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesProFeedbackDO extends BaseDO {
+public class MesProFeedbackDO extends TenantBaseDO {
 
     /**
      * 编号

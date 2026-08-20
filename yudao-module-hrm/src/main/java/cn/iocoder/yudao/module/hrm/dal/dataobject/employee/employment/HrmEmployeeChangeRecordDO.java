@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.hrm.dal.dataobject.employee.employment;
 
 import cn.iocoder.yudao.module.hrm.dal.dataobject.employee.info.HrmEmployeeDO;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.hrm.enums.employee.employment.HrmEmployeeChangeReasonEnum;
 import cn.iocoder.yudao.module.hrm.enums.employee.employment.HrmEmployeeChangeTypeEnum;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.DeptDO;
@@ -31,7 +31,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HrmEmployeeChangeRecordDO extends BaseDO {
+public class HrmEmployeeChangeRecordDO extends TenantBaseDO {
 
     /**
      * 异动记录编号

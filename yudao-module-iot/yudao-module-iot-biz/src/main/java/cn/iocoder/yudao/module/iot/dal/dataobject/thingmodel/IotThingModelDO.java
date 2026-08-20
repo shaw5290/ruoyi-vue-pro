@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.iot.dal.dataobject.thingmodel;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.iot.dal.dataobject.thingmodel.model.ThingModelEvent;
 import cn.iocoder.yudao.module.iot.dal.dataobject.thingmodel.model.ThingModelProperty;
 import cn.iocoder.yudao.module.iot.dal.dataobject.thingmodel.model.ThingModelService;
@@ -30,7 +30,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class IotThingModelDO extends BaseDO {
+public class IotThingModelDO extends TenantBaseDO {
 
     /**
      * 物模型功能编号

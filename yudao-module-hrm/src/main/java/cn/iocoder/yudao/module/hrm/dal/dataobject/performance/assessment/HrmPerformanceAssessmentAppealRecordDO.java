@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.hrm.dal.dataobject.performance.assessment;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.hrm.enums.performance.assessment.HrmPerformanceAppealRecordStatusEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -20,7 +20,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class HrmPerformanceAssessmentAppealRecordDO extends BaseDO {
+public class HrmPerformanceAssessmentAppealRecordDO extends TenantBaseDO {
 
     /**
      * 申诉记录编号

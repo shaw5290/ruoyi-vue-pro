@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.wm.arrivalnotice;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.md.vendor.MesMdVendorDO;
 import cn.iocoder.yudao.module.mes.enums.wm.MesWmArrivalNoticeStatusEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -23,7 +23,7 @@ import cn.iocoder.yudao.module.mes.enums.DictTypeConstants;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesWmArrivalNoticeDO extends BaseDO {
+public class MesWmArrivalNoticeDO extends TenantBaseDO {
 
     /**
      * 编号

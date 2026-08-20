@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.fms.dal.dataobject.closing;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.fms.enums.common.FmsDebitCreditDirectionEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -31,7 +31,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class FmsClosingSchemeDO extends BaseDO {
+public class FmsClosingSchemeDO extends TenantBaseDO {
 
     /**
      * 编号

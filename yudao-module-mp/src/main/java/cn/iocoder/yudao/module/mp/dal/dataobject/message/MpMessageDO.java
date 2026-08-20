@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mp.dal.dataobject.message;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mp.dal.dataobject.account.MpAccountDO;
 import cn.iocoder.yudao.module.mp.dal.dataobject.user.MpUserDO;
 import cn.iocoder.yudao.module.mp.enums.message.MpMessageSendFromEnum;
@@ -30,7 +30,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class MpMessageDO extends BaseDO {
+public class MpMessageDO extends TenantBaseDO {
 
     /**
      * 主键

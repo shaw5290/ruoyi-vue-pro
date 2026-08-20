@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.infra.dal.dataobject.demo.demo01;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Demo01ContactDO extends BaseDO {
+public class Demo01ContactDO extends TenantBaseDO {
 
     /**
      * 编号

@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.bpm.dal.dataobject.definition;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.framework.mybatis.core.type.LongListTypeHandler;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model.BpmModelMetaInfoVO;
 import cn.iocoder.yudao.module.bpm.enums.definition.BpmAutoApproveTypeEnum;
@@ -34,7 +34,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BpmProcessDefinitionInfoDO extends BaseDO {
+public class BpmProcessDefinitionInfoDO extends TenantBaseDO {
 
     /**
      * 编号

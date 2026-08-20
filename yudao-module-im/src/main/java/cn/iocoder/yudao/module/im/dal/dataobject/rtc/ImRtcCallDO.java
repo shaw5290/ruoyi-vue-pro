@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.im.dal.dataobject.rtc;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.im.dal.dataobject.group.ImGroupDO;
 import cn.iocoder.yudao.module.im.enums.ImConversationTypeEnum;
 import cn.iocoder.yudao.module.im.enums.rtc.ImRtcCallEndReasonEnum;
@@ -29,7 +29,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ImRtcCallDO extends BaseDO {
+public class ImRtcCallDO extends TenantBaseDO {
 
     /**
      * 编号

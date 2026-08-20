@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.crm.dal.dataobject.receivable;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.crm.dal.dataobject.contract.CrmContractDO;
 import cn.iocoder.yudao.module.crm.dal.dataobject.customer.CrmCustomerDO;
 import cn.iocoder.yudao.module.crm.enums.receivable.CrmReceivableReturnTypeEnum;
@@ -26,7 +26,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CrmReceivablePlanDO extends BaseDO {
+public class CrmReceivablePlanDO extends TenantBaseDO {
 
     /**
      * 编号

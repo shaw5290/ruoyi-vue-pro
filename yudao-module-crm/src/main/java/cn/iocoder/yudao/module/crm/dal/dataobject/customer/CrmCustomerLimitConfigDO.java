@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.crm.dal.dataobject.customer;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.framework.mybatis.core.type.LongListTypeHandler;
 import cn.iocoder.yudao.module.crm.enums.customer.CrmCustomerLimitConfigTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -25,7 +25,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CrmCustomerLimitConfigDO extends BaseDO {
+public class CrmCustomerLimitConfigDO extends TenantBaseDO {
 
     /**
      * 编号

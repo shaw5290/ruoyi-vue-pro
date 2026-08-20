@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.crm.dal.dataobject.business;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.crm.dal.dataobject.product.CrmProductDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -25,7 +25,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CrmBusinessProductDO extends BaseDO {
+public class CrmBusinessProductDO extends TenantBaseDO {
 
     /**
      * 主键

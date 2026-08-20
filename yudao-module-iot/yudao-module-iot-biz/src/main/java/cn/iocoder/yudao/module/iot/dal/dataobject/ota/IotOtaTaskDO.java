@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.iot.dal.dataobject.ota;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.iot.enums.ota.IotOtaTaskDeviceScopeEnum;
 import cn.iocoder.yudao.module.iot.enums.ota.IotOtaTaskStatusEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class IotOtaTaskDO extends BaseDO {
+public class IotOtaTaskDO extends TenantBaseDO {
 
     /**
      * 任务编号

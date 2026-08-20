@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.crm.dal.dataobject.product;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -20,7 +20,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CrmProductCategoryDO extends BaseDO {
+public class CrmProductCategoryDO extends TenantBaseDO {
 
     /**
      * 父分类编号 - 根分类

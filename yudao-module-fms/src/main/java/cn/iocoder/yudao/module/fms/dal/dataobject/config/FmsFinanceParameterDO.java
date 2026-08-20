@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.fms.dal.dataobject.config;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.fms.enums.ledger.FmsLedgerBalanceModeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -26,7 +26,7 @@ import lombok.ToString;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class FmsFinanceParameterDO extends BaseDO {
+public class FmsFinanceParameterDO extends TenantBaseDO {
 
     public static final Integer DEFAULT_LEVEL = 4;
 

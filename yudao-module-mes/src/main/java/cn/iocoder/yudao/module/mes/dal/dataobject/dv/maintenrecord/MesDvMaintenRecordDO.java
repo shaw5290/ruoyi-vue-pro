@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.dv.maintenrecord;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.dv.checkplan.MesDvCheckPlanDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.dv.machinery.MesDvMachineryDO;
 import cn.iocoder.yudao.module.mes.enums.dv.MesDvMaintenRecordStatusEnum;
@@ -26,7 +26,7 @@ import cn.iocoder.yudao.module.mes.enums.DictTypeConstants;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesDvMaintenRecordDO extends BaseDO {
+public class MesDvMaintenRecordDO extends TenantBaseDO {
 
     /**
      * 编号

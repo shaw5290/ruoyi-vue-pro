@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.iot.dal.dataobject.alert;
 
 import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.framework.mybatis.core.type.IntegerListTypeHandler;
 import cn.iocoder.yudao.framework.mybatis.core.type.LongListTypeHandler;
 import cn.iocoder.yudao.module.iot.dal.dataobject.rule.IotSceneRuleDO;
@@ -31,7 +31,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class IotAlertConfigDO extends BaseDO {
+public class IotAlertConfigDO extends TenantBaseDO {
 
     /**
      * 配置编号

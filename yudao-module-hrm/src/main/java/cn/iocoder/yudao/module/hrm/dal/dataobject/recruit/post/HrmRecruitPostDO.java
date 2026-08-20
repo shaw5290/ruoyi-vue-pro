@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.hrm.dal.dataobject.recruit.post;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.framework.mybatis.core.type.LongListTypeHandler;
 import cn.iocoder.yudao.module.hrm.dal.dataobject.employee.info.HrmEmployeeDO;
 import cn.iocoder.yudao.module.hrm.enums.DictTypeConstants;
@@ -35,7 +35,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HrmRecruitPostDO extends BaseDO {
+public class HrmRecruitPostDO extends TenantBaseDO {
 
     /**
      * 薪资 - 面议值

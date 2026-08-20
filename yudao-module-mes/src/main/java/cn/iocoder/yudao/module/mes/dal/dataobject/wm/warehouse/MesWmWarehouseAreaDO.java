@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.wm.warehouse;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesWmWarehouseAreaDO extends BaseDO {
+public class MesWmWarehouseAreaDO extends TenantBaseDO {
 
     /**
      * 虚拟线边库位编码（配合 {@link MesWmWarehouseDO#WIP_VIRTUAL_WAREHOUSE} 使用）

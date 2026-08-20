@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.tm.tool;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.enums.tm.MesTmToolStatusEnum;
 import cn.iocoder.yudao.module.mes.enums.tm.MesTmMaintenTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -25,7 +25,7 @@ import cn.iocoder.yudao.module.mes.enums.DictTypeConstants;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesTmToolDO extends BaseDO {
+public class MesTmToolDO extends TenantBaseDO {
 
     /**
      * 编号

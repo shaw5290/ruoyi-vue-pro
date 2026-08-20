@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.hrm.dal.dataobject.salary.monthrecord;
 
 import cn.iocoder.yudao.module.hrm.dal.dataobject.salary.config.HrmSalaryOptionDO;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.hrm.dal.dataobject.employee.info.HrmEmployeeDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -32,7 +32,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HrmSalaryMonthEmployeeRecordDO extends BaseDO {
+public class HrmSalaryMonthEmployeeRecordDO extends TenantBaseDO {
 
     /**
      * 编号

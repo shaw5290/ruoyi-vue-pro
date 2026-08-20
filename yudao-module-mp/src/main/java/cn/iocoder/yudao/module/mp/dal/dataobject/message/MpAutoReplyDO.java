@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.mp.dal.dataobject.message;
 
 import cn.iocoder.yudao.framework.common.util.collection.SetUtils;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mp.dal.dataobject.account.MpAccountDO;
 import cn.iocoder.yudao.module.mp.enums.message.MpAutoReplyMatchEnum;
 import cn.iocoder.yudao.module.mp.enums.message.MpAutoReplyTypeEnum;
@@ -30,7 +30,7 @@ import java.util.Set;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class MpAutoReplyDO extends BaseDO {
+public class MpAutoReplyDO extends TenantBaseDO {
 
     public static Set<String> REQUEST_MESSAGE_TYPE = SetUtils.asSet(WxConsts.XmlMsgType.TEXT, WxConsts.XmlMsgType.IMAGE,
             WxConsts.XmlMsgType.VOICE, WxConsts.XmlMsgType.VIDEO, WxConsts.XmlMsgType.SHORTVIDEO,

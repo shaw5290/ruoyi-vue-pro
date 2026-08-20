@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.ai.dal.dataobject.chat;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.framework.mybatis.core.type.LongListTypeHandler;
 import cn.iocoder.yudao.framework.mybatis.core.type.StringListTypeHandler;
 import cn.iocoder.yudao.module.ai.dal.dataobject.knowledge.AiKnowledgeSegmentDO;
@@ -33,7 +33,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AiChatMessageDO extends BaseDO {
+public class AiChatMessageDO extends TenantBaseDO {
 
     /**
      * 编号，作为每条聊天记录的唯一标识符

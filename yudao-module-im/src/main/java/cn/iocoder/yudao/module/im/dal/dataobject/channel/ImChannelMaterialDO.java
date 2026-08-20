@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.im.dal.dataobject.channel;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.im.dal.dataobject.message.ImChannelMessageDO;
 import cn.iocoder.yudao.module.im.enums.channel.ImChannelMaterialTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -27,7 +27,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ImChannelMaterialDO extends BaseDO {
+public class ImChannelMaterialDO extends TenantBaseDO {
 
     /**
      * 编号

@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.erp.dal.dataobject.purchase;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.erp.dal.dataobject.finance.ErpAccountDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -24,7 +24,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErpPurchaseOrderDO extends BaseDO {
+public class ErpPurchaseOrderDO extends TenantBaseDO {
 
     /**
      * 编号

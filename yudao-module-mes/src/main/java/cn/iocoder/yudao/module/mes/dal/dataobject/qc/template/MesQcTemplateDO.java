@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.qc.template;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.framework.mybatis.core.type.IntegerListTypeHandler;
 import cn.iocoder.yudao.module.mes.enums.DictTypeConstants;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -25,7 +25,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesQcTemplateDO extends BaseDO {
+public class MesQcTemplateDO extends TenantBaseDO {
 
     /**
      * 编号

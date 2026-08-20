@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.dv.repair;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.dv.machinery.MesDvMachineryDO;
 import cn.iocoder.yudao.module.mes.enums.dv.MesDvRepairResultEnum;
 import cn.iocoder.yudao.module.mes.enums.dv.MesDvRepairStatusEnum;
@@ -26,7 +26,7 @@ import cn.iocoder.yudao.module.mes.enums.DictTypeConstants;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesDvRepairDO extends BaseDO {
+public class MesDvRepairDO extends TenantBaseDO {
 
     /**
      * 编号

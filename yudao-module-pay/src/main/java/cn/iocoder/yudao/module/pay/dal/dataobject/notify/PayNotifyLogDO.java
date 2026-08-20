@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.pay.dal.dataobject.notify;
 
 import cn.iocoder.yudao.module.pay.enums.notify.PayNotifyStatusEnum;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -21,7 +21,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PayNotifyLogDO extends BaseDO {
+public class PayNotifyLogDO extends TenantBaseDO {
 
     /**
      * 日志编号，自增

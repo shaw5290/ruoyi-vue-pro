@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.wm.stocktaking.task;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.wm.stocktaking.plan.MesWmStockTakingPlanDO;
 import cn.iocoder.yudao.module.mes.enums.wm.MesWmStockTakingTaskStatusEnum;
 import cn.iocoder.yudao.module.mes.enums.wm.MesWmStockTakingTypeEnum;
@@ -26,7 +26,7 @@ import cn.iocoder.yudao.module.mes.enums.DictTypeConstants;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesWmStockTakingTaskDO extends BaseDO {
+public class MesWmStockTakingTaskDO extends TenantBaseDO {
 
     /**
      * 编号

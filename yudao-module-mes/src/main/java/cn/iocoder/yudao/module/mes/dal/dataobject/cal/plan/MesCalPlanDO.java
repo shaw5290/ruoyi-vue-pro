@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.cal.plan;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.enums.cal.MesCalPlanStatusEnum;
 import cn.iocoder.yudao.module.mes.enums.cal.MesCalShiftMethodEnum;
 import cn.iocoder.yudao.module.mes.enums.cal.MesCalShiftTypeEnum;
@@ -26,7 +26,7 @@ import cn.iocoder.yudao.module.mes.enums.DictTypeConstants;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesCalPlanDO extends BaseDO {
+public class MesCalPlanDO extends TenantBaseDO {
 
     /**
      * 计划编号

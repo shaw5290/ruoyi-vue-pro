@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.ai.dal.dataobject.write;
 
 import cn.iocoder.yudao.module.ai.enums.model.AiPlatformEnum;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.ai.dal.dataobject.model.AiModelDO;
 import cn.iocoder.yudao.module.ai.enums.DictTypeConstants;
 import cn.iocoder.yudao.module.ai.enums.write.AiWriteTypeEnum;
@@ -19,7 +19,7 @@ import lombok.Data;
 @TableName("ai_write")
 @KeySequence("ai_write_seq") // 用于 Oracle、PostgreSQL、Kingbase、DB2、H2 数据库的主键自增。如果是 MySQL 等数据库，可不写。
 @Data
-public class AiWriteDO extends BaseDO {
+public class AiWriteDO extends TenantBaseDO {
 
     /**
      * 编号

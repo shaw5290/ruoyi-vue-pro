@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.hrm.dal.dataobject.employee.experience;
 
 import cn.iocoder.yudao.module.hrm.dal.dataobject.employee.info.HrmEmployeeDO;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.hrm.enums.DictTypeConstants;
 import cn.iocoder.yudao.module.hrm.enums.employee.experience.HrmEmployeeEducationEnum;
 import cn.iocoder.yudao.module.hrm.enums.employee.experience.HrmEmployeeTeachingMethodEnum;
@@ -31,7 +31,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HrmEmployeeEducationExperienceDO extends BaseDO {
+public class HrmEmployeeEducationExperienceDO extends TenantBaseDO {
 
     /**
      * 教育经历编号

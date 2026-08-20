@@ -3,7 +3,7 @@ package cn.iocoder.yudao.module.infra.dal.dataobject.logger;
 import cn.iocoder.yudao.framework.apilog.core.enums.OperateTypeEnum;
 import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
 import cn.iocoder.yudao.framework.common.pojo.CommonResult;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -27,7 +27,7 @@ import org.dromara.autotable.annotation.ColumnType;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ApiAccessLogDO extends BaseDO {
+public class ApiAccessLogDO extends TenantBaseDO {
 
     /**
      * {@link #requestParams} 的最大长度

@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.erp.dal.dataobject.sale;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.erp.dal.dataobject.product.ErpProductDO;
 import cn.iocoder.yudao.module.erp.dal.dataobject.stock.ErpStockOutDO;
 import cn.iocoder.yudao.module.erp.dal.dataobject.stock.ErpWarehouseDO;
@@ -25,7 +25,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErpSaleOutItemDO extends BaseDO {
+public class ErpSaleOutItemDO extends TenantBaseDO {
 
     /**
      * 编号

@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.erp.dal.dataobject.stock;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.erp.dal.dataobject.product.ErpProductDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -23,7 +23,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErpStockDO extends BaseDO {
+public class ErpStockDO extends TenantBaseDO {
 
     /**
      * 编号

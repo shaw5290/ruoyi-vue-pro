@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.qc.defectrecord;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.qc.ipqc.MesQcIpqcDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.qc.ipqc.MesQcIpqcLineDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.qc.iqc.MesQcIqcDO;
@@ -29,7 +29,7 @@ import cn.iocoder.yudao.module.mes.enums.DictTypeConstants;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesQcDefectRecordDO extends BaseDO {
+public class MesQcDefectRecordDO extends TenantBaseDO {
 
     /**
      * 编号

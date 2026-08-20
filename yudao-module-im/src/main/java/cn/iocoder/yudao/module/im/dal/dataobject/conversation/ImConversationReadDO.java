@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.im.dal.dataobject.conversation;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.im.dal.dataobject.channel.ImChannelDO;
 import cn.iocoder.yudao.module.im.dal.dataobject.group.ImGroupDO;
 import cn.iocoder.yudao.module.im.dal.dataobject.message.ImChannelMessageDO;
@@ -30,7 +30,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ImConversationReadDO extends BaseDO {
+public class ImConversationReadDO extends TenantBaseDO {
 
     /**
      * 编号

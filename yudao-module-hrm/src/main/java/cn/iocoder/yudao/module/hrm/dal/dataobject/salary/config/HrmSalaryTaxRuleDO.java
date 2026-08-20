@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.hrm.dal.dataobject.salary.config;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.hrm.enums.salary.config.HrmSalaryTaxCycleTypeEnum;
 import cn.iocoder.yudao.module.hrm.enums.salary.config.HrmSalaryTaxTypeEnum;
 import com.baomidou.mybatisplus.annotation.FieldStrategy;
@@ -31,7 +31,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HrmSalaryTaxRuleDO extends BaseDO {
+public class HrmSalaryTaxRuleDO extends TenantBaseDO {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;

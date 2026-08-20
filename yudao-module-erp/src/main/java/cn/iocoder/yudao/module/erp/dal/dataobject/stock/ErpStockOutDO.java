@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.erp.dal.dataobject.stock;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErpStockOutDO extends BaseDO {
+public class ErpStockOutDO extends TenantBaseDO {
 
     /**
      * 出库编号

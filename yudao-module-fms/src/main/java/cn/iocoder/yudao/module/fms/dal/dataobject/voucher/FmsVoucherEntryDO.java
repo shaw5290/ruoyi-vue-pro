@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.fms.dal.dataobject.voucher;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -30,7 +30,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class FmsVoucherEntryDO extends BaseDO {
+public class FmsVoucherEntryDO extends TenantBaseDO {
 
     /**
      * 编号

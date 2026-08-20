@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.im.dal.dataobject.group;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.im.enums.group.ImGroupAddSourceEnum;
 import cn.iocoder.yudao.module.im.enums.group.ImGroupRequestHandleResultEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -31,7 +31,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ImGroupRequestDO extends BaseDO {
+public class ImGroupRequestDO extends TenantBaseDO {
 
     /**
      * 编号

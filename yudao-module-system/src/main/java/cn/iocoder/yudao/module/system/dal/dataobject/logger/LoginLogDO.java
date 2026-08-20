@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.system.dal.dataobject.logger;
 
 import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.system.enums.logger.LoginLogTypeEnum;
 import cn.iocoder.yudao.module.system.enums.logger.LoginResultEnum;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -24,7 +24,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class LoginLogDO extends BaseDO {
+public class LoginLogDO extends TenantBaseDO {
 
     /**
      * 日志主键

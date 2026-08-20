@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.md.workstation;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.pro.process.MesProProcessDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.wm.warehouse.MesWmWarehouseAreaDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.wm.warehouse.MesWmWarehouseDO;
@@ -24,7 +24,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesMdWorkstationDO extends BaseDO {
+public class MesMdWorkstationDO extends TenantBaseDO {
 
     /**
      * 编号

@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.pro.process;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -20,7 +20,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesProProcessContentDO extends BaseDO {
+public class MesProProcessContentDO extends TenantBaseDO {
 
     /**
      * 编号

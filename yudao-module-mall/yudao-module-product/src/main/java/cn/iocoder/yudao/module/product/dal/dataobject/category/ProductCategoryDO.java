@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.product.dal.dataobject.category;
 
 import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -21,7 +21,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductCategoryDO extends BaseDO {
+public class ProductCategoryDO extends TenantBaseDO {
 
     /**
      * 父分类编号 - 根分类

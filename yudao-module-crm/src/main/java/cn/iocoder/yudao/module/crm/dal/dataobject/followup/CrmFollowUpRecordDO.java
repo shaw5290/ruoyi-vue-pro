@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.crm.dal.dataobject.followup;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.framework.mybatis.core.type.LongListTypeHandler;
 import cn.iocoder.yudao.framework.mybatis.core.type.StringListTypeHandler;
 import cn.iocoder.yudao.module.crm.dal.dataobject.business.CrmBusinessDO;
@@ -32,7 +32,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CrmFollowUpRecordDO extends BaseDO {
+public class CrmFollowUpRecordDO extends TenantBaseDO {
 
     /**
      * 编号

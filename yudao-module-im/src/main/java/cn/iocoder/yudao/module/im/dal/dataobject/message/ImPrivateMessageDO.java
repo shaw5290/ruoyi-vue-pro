@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.im.dal.dataobject.message;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.im.enums.message.ImMessageReceiptStatusEnum;
 import cn.iocoder.yudao.module.im.enums.message.ImMessageStatusEnum;
 import cn.iocoder.yudao.module.im.enums.ImContentTypeEnum;
@@ -25,7 +25,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ImPrivateMessageDO extends BaseDO {
+public class ImPrivateMessageDO extends TenantBaseDO {
 
     /**
      * 编号

@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.im.dal.dataobject.group;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
 import cn.iocoder.yudao.module.im.enums.group.ImGroupAddSourceEnum;
 import cn.iocoder.yudao.module.im.enums.group.ImGroupMemberRoleEnum;
@@ -25,7 +25,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ImGroupMemberDO extends BaseDO {
+public class ImGroupMemberDO extends TenantBaseDO {
 
     /**
      * 永久禁言到期时间

@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.iot.dal.dataobject.ota;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.iot.dal.dataobject.device.IotDeviceDO;
 import cn.iocoder.yudao.module.iot.dal.dataobject.device.IotDeviceMessageDO;
 import cn.iocoder.yudao.module.iot.enums.ota.IotOtaTaskRecordStatusEnum;
@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class IotOtaTaskRecordDO extends BaseDO {
+public class IotOtaTaskRecordDO extends TenantBaseDO {
 
     public static final String DESCRIPTION_CANCEL_BY_TASK = "管理员手动取消升级任务（批量）";
 

@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.promotion.dal.dataobject.seckill;
 
 import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.framework.mybatis.core.type.LongListTypeHandler;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -25,7 +25,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class SeckillActivityDO extends BaseDO {
+public class SeckillActivityDO extends TenantBaseDO {
 
     /**
      * 秒杀活动编号

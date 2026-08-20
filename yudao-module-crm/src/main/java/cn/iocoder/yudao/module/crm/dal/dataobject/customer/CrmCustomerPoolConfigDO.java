@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.crm.dal.dataobject.customer;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.*;
 
@@ -17,7 +17,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CrmCustomerPoolConfigDO extends BaseDO {
+public class CrmCustomerPoolConfigDO extends TenantBaseDO {
 
     /**
      * 编号

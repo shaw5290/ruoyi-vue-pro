@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mp.dal.dataobject.menu;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mp.dal.dataobject.account.MpAccountDO;
 import cn.iocoder.yudao.module.mp.dal.dataobject.message.MpMessageDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -27,7 +27,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class MpMenuDO extends BaseDO {
+public class MpMenuDO extends TenantBaseDO {
 
     /**
      * 编号 - 顶级菜单

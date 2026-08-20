@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.bpm.dal.dataobject.definition;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.bpm.enums.definition.BpmProcessListenerTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BpmProcessListenerDO extends BaseDO {
+public class BpmProcessListenerDO extends TenantBaseDO {
 
     /**
      * 主键 ID，自增

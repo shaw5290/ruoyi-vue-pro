@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.fms.dal.dataobject.report.cashflow;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -25,7 +25,7 @@ import lombok.ToString;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class FmsCashFlowStatementConfigDO extends BaseDO {
+public class FmsCashFlowStatementConfigDO extends TenantBaseDO {
 
     /**
      * 编号

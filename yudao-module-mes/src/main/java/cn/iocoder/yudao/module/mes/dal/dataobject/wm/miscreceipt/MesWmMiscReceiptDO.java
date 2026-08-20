@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.wm.miscreceipt;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.enums.DictTypeConstants;
 import cn.iocoder.yudao.module.mes.enums.wm.MesWmMiscReceiptStatusEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -24,7 +24,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesWmMiscReceiptDO extends BaseDO {
+public class MesWmMiscReceiptDO extends TenantBaseDO {
 
     /**
      * 编号

@@ -16,6 +16,9 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
+import org.dromara.autotable.core.constants.DatabaseDialect;
+import org.dromara.autotable.core.converter.JavaTypeToDatabaseTypeConverter;
+import org.dromara.autotable.strategy.mysql.data.MySqlDefaultTypeEnum;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -36,6 +39,9 @@ import tools.jackson.databind.ObjectMapper;
 public class YudaoMybatisAutoConfiguration {
 
     static {
+        // AutoTable：MySQL 的 byte[] 使用 MEDIUMBLOB，避免默认退化为字符串类型
+//        JavaTypeToDatabaseTypeConverter.addTypeMapping(
+//                DatabaseDialect.MySQL, byte[].class, MySqlDefaultTypeEnum.MEDIUMBLOB);
         // 动态 SQL 智能优化支持本地缓存加速解析，更完善的租户复杂 XML 动态 SQL 支持，静态注入缓存
         JsqlParserGlobal.setJsqlParseCache(new JdkSerialCaffeineJsqlParseCache(
                 (cache) -> cache.maximumSize(1024)

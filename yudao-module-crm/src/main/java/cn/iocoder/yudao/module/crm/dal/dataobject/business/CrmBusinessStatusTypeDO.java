@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.crm.dal.dataobject.business;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.framework.mybatis.core.type.LongListTypeHandler;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -26,7 +26,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CrmBusinessStatusTypeDO extends BaseDO {
+public class CrmBusinessStatusTypeDO extends TenantBaseDO {
 
     /**
      * 主键

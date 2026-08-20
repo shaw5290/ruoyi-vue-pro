@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.im.dal.dataobject.friend;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.im.enums.friend.ImFriendAddSourceEnum;
 import cn.iocoder.yudao.module.im.enums.friend.ImFriendRequestHandleResultEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -29,7 +29,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ImFriendRequestDO extends BaseDO {
+public class ImFriendRequestDO extends TenantBaseDO {
 
     /**
      * 编号

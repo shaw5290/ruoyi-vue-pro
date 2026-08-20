@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mp.dal.dataobject.material;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mp.dal.dataobject.account.MpAccountDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -25,7 +25,7 @@ import me.chanjar.weixin.common.api.WxConsts;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MpMaterialDO extends BaseDO {
+public class MpMaterialDO extends TenantBaseDO {
 
     /**
      * 主键

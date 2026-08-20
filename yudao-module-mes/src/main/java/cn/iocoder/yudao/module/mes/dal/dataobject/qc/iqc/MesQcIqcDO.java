@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.mes.dal.dataobject.qc.iqc;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.md.item.MesMdItemDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.md.vendor.MesMdVendorDO;
 import cn.iocoder.yudao.module.mes.dal.dataobject.qc.template.MesQcTemplateDO;
@@ -32,7 +32,7 @@ import cn.iocoder.yudao.module.mes.enums.DictTypeConstants;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MesQcIqcDO extends BaseDO {
+public class MesQcIqcDO extends TenantBaseDO {
 
     /**
      * 编号
