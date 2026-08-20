@@ -1,0 +1,33 @@
+name: Sync ruoyi-vue-pro to Gitee
+
+on:
+  push:
+    branches:
+      - '**'          # 监听所有分支推送
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 完整克隆，确保推送所有分支和标签
+
+      - name: Setup Gitee SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.GITEE_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan gitee.com >> ~/.ssh/known_hosts
+
+      - name: Push to Gitee
+        run: |
+          git remote add gitee git@gitee.com:aicoa-cn/ruoyi-vue-pro.git
+          # 强制覆盖推送（Gitee 作为只读镜像，推荐）
+          git push -f gitee --all
+          git push -f gitee --tags
+          # 若希望非强制（仅推送新增提交，冲突时中止），可改用下面两行（注释掉上面两行）：
+          # git push gitee --all
+          # git push gitee --tags
