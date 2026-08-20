@@ -5,6 +5,7 @@ import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnore;
 import cn.iocoder.yudao.module.infra.enums.job.JobStatusEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -27,7 +28,7 @@ public class JobDO extends BaseDO {
     /**
      * 任务编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 任务名称

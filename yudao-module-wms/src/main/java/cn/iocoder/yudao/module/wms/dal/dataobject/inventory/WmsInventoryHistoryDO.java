@@ -10,6 +10,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
 import java.math.BigDecimal;
+import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnore;
+import com.baomidou.mybatisplus.annotation.IdType;
 
 /**
  * WMS 库存流水 DO
@@ -17,6 +19,7 @@ import java.math.BigDecimal;
  * @author 芋道源码
  */
 @TableName("wms_inventory_history")
+@TenantIgnore
 @KeySequence("wms_inventory_history_seq")
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -29,7 +32,7 @@ public class WmsInventoryHistoryDO extends BaseDO {
     /**
      * 主键编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     // ========= 库存维度相关字段 =========

@@ -3,6 +3,7 @@ package cn.iocoder.yudao.module.hrm.dal.dataobject.performance.assessment;
 import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,7 +26,7 @@ public class HrmPerformanceAssessmentQuotaScoreDO extends BaseDO {
     /**
      * 考核指标评分编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 员工绩效考核阶段编号

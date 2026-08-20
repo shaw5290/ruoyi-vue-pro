@@ -3,6 +3,7 @@ package cn.iocoder.yudao.module.system.dal.dataobject.permission;
 import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,7 +22,7 @@ public class UserRoleDO extends BaseDO {
     /**
      * 自增主键
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 用户 ID

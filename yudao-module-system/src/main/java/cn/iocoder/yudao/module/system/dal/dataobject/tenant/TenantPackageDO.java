@@ -11,6 +11,10 @@ import lombok.*;
 
 import java.util.Set;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import org.dromara.autotable.annotation.ColumnType;
+
 /**
  * 租户套餐 DO
  *
@@ -30,7 +34,9 @@ public class TenantPackageDO extends BaseDO {
     /**
      * 套餐编号，自增
      */
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+
+        private Long id;
     /**
      * 套餐名，唯一
      */
@@ -49,6 +55,7 @@ public class TenantPackageDO extends BaseDO {
      * 关联的菜单编号
      */
     @TableField(typeHandler = Jackson3TypeHandler.class)
+    @ColumnType("text")
     private Set<Long> menuIds;
 
 }

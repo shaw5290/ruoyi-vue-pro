@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
 import java.math.BigDecimal;
+import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnore;
+import com.baomidou.mybatisplus.annotation.IdType;
 
 /**
  * WMS 商品 SKU DO
@@ -14,6 +16,7 @@ import java.math.BigDecimal;
  * @author 芋道源码
  */
 @TableName("wms_item_sku")
+@TenantIgnore
 @KeySequence("wms_item_sku_seq")
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -26,7 +29,7 @@ public class WmsItemSkuDO extends BaseDO {
     /**
      * 主键编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 规格名称

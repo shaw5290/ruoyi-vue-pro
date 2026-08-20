@@ -17,7 +17,7 @@ public class CrmContractConfigDO extends BaseDO {
     /**
      * 编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 是否开启提前提醒

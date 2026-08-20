@@ -7,6 +7,7 @@ import cn.iocoder.yudao.module.mp.enums.message.MpMessageSendFromEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.Jackson3TypeHandler;
 import jakarta.validation.constraints.NotEmpty;
@@ -34,7 +35,7 @@ public class MpMessageDO extends BaseDO {
     /**
      * 主键
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 微信公众号消息 id

@@ -22,7 +22,7 @@ public class CrmCustomerPoolConfigDO extends BaseDO {
     /**
      * 编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 是否启用客户公海

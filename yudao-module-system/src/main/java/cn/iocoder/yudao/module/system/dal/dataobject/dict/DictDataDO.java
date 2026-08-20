@@ -22,7 +22,7 @@ public class DictDataDO extends BaseDO {
     /**
      * 字典数据编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 字典排序

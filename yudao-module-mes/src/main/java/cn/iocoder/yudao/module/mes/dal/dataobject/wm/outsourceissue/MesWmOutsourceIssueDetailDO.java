@@ -6,6 +6,7 @@ import cn.iocoder.yudao.module.mes.dal.dataobject.wm.materialstock.MesWmMaterial
 import cn.iocoder.yudao.module.mes.dal.dataobject.wm.warehouse.MesWmWarehouseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -29,7 +30,7 @@ public class MesWmOutsourceIssueDetailDO extends BaseDO {
     /**
      * 明细ID
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 行ID

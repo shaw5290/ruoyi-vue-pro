@@ -4,8 +4,11 @@ import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
 import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+
+import org.dromara.autotable.annotation.ColumnType;
 
 /**
  * 操作日志表
@@ -20,7 +23,7 @@ public class OperateLogDO extends BaseDO {
     /**
      * 日志主键
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 链路追踪编号
@@ -57,12 +60,14 @@ public class OperateLogDO extends BaseDO {
      *
      * 例如说，修改编号为 1 的用户信息，将性别从男改成女，将姓名从芋道改成源码。
      */
+    @ColumnType("text")
     private String action;
     /**
      * 拓展字段，有些复杂的业务，需要记录一些字段 ( JSON 格式 )
      *
      * 例如说，记录订单编号，{ orderId: "1"}
      */
+    @ColumnType("text")
     private String extra;
 
     /**

@@ -4,8 +4,11 @@ import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import cn.iocoder.yudao.module.system.enums.social.SocialTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
+
+import org.dromara.autotable.annotation.ColumnType;
 
 /**
  * 社交（三方）用户
@@ -24,7 +27,7 @@ public class SocialUserDO extends BaseDO {
     /**
      * 自增主键
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 社交平台的类型
@@ -44,6 +47,7 @@ public class SocialUserDO extends BaseDO {
     /**
      * 原始 Token 数据，一般是 JSON 格式
      */
+    @ColumnType("text")
     private String rawTokenInfo;
 
     /**
@@ -57,6 +61,7 @@ public class SocialUserDO extends BaseDO {
     /**
      * 原始用户数据，一般是 JSON 格式
      */
+    @ColumnType("text")
     private String rawUserInfo;
 
     /**

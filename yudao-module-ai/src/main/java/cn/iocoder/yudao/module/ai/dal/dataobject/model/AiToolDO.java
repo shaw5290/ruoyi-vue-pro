@@ -5,6 +5,7 @@ import cn.iocoder.yudao.module.ai.tool.function.DirectoryListToolFunction;
 import cn.iocoder.yudao.module.ai.tool.function.WeatherQueryToolFunction;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -24,7 +25,7 @@ public class AiToolDO extends BaseDO {
     /**
      * 工具编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 工具名称

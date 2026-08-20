@@ -16,7 +16,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.util.List;
 
 /**
@@ -37,7 +39,9 @@ public class IotDataRuleDO extends BaseDO {
     /**
      * 数据流转规格编号
      */
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+
+        private Long id;
     /**
      * 数据流转规格名称
      */

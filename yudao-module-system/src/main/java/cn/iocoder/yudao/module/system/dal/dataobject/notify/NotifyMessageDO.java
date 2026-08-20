@@ -5,12 +5,15 @@ import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.Jackson3TypeHandler;
 import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Map;
+
+import org.dromara.autotable.annotation.ColumnType;
 
 /**
  * 站内信 DO
@@ -30,7 +33,7 @@ public class NotifyMessageDO extends BaseDO {
     /**
      * 站内信编号，自增
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 用户编号
@@ -76,6 +79,7 @@ public class NotifyMessageDO extends BaseDO {
      *
      * 基于 {@link NotifyTemplateDO#getContent()} 格式化后的内容
      */
+    @ColumnType("text")
     private String templateContent;
     /**
      * 模版参数

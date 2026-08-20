@@ -12,6 +12,10 @@ import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import org.dromara.autotable.annotation.ColumnType;
+
 /**
  * 邮件模版 DO
  *
@@ -28,7 +32,9 @@ public class MailTemplateDO extends BaseDO {
     /**
      * 主键
      */
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+
+        private Long id;
     /**
      * 模版名称
      */
@@ -55,6 +61,7 @@ public class MailTemplateDO extends BaseDO {
     /**
      * 内容
      */
+    @ColumnType("text")
     private String content;
     /**
      * 参数数组(自动根据内容生成)

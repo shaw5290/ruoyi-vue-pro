@@ -5,10 +5,13 @@ import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import cn.iocoder.yudao.module.infra.enums.logger.ApiErrorLogProcessStatusEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
 import java.time.LocalDateTime;
+
+import org.dromara.autotable.annotation.ColumnType;
 
 /**
  * API 异常数据
@@ -33,7 +36,7 @@ public class ApiErrorLogDO extends BaseDO {
     /**
      * 编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 用户编号
@@ -74,6 +77,7 @@ public class ApiErrorLogDO extends BaseDO {
      * query: Query String
      * body: Quest Body
      */
+    @ColumnType("text")
     private String requestParams;
     /**
      * 用户 IP
@@ -101,18 +105,21 @@ public class ApiErrorLogDO extends BaseDO {
      *
      * {@link cn.hutool.core.exceptions.ExceptionUtil#getMessage(Throwable)}
      */
+    @ColumnType("text")
     private String exceptionMessage;
     /**
      * 异常导致的根消息
      *
      * {@link cn.hutool.core.exceptions.ExceptionUtil#getRootCauseMessage(Throwable)}
      */
+    @ColumnType("text")
     private String exceptionRootCauseMessage;
     /**
      * 异常的栈轨迹
      *
      * {@link org.apache.commons.lang3.exception.ExceptionUtils#getStackTrace(Throwable)}
      */
+    @ColumnType("text")
     private String exceptionStackTrace;
     /**
      * 异常发生的类全名

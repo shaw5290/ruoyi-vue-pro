@@ -4,9 +4,13 @@ import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
 import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import cn.iocoder.yudao.module.system.enums.notice.NoticeTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import org.dromara.autotable.annotation.ColumnType;
 
 /**
  * 通知公告表
@@ -22,6 +26,7 @@ public class NoticeDO extends BaseDO {
     /**
      * 公告ID
      */
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 公告标题
@@ -36,6 +41,7 @@ public class NoticeDO extends BaseDO {
     /**
      * 公告内容
      */
+    @ColumnType("text")
     private String content;
     /**
      * 公告状态

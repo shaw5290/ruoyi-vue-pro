@@ -16,7 +16,9 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.AbstractJsonTypeHandler;
 import tools.jackson.core.type.TypeReference;
 import lombok.*;
-
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.lang.reflect.Field;
 
 /**
@@ -40,7 +42,9 @@ public class PayChannelDO extends TenantBaseDO {
     /**
      * 渠道编号，数据库自增
      */
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+
+        private Long id;
     /**
      * 渠道编码
      *

@@ -8,6 +8,7 @@ import cn.iocoder.yudao.module.mes.dal.dataobject.wm.warehouse.MesWmWarehouseLoc
 import cn.iocoder.yudao.module.mes.enums.wm.MesWmStockTakingTaskLineStatusEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -32,7 +33,7 @@ public class MesWmStockTakingTaskLineDO extends BaseDO {
     /**
      * 编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 盘点任务编号

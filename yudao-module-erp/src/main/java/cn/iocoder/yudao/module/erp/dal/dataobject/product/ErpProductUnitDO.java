@@ -25,7 +25,7 @@ public class ErpProductUnitDO extends BaseDO {
     /**
      * 单位编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 单位名字

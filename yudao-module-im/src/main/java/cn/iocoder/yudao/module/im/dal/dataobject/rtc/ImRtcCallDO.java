@@ -8,6 +8,7 @@ import cn.iocoder.yudao.module.im.enums.rtc.ImRtcCallMediaTypeEnum;
 import cn.iocoder.yudao.module.im.enums.rtc.ImRtcCallStatusEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -33,7 +34,7 @@ public class ImRtcCallDO extends BaseDO {
     /**
      * 编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 业务通话编号（UUID，同时作为 LiveKit 房间名）；唯一

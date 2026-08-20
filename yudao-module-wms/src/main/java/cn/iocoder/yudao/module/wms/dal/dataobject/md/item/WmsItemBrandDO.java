@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
+import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnore;
+import com.baomidou.mybatisplus.annotation.IdType;
 
 /**
  * WMS 商品品牌 DO
@@ -12,6 +14,7 @@ import lombok.*;
  * @author 芋道源码
  */
 @TableName("wms_item_brand")
+@TenantIgnore
 @KeySequence("wms_item_brand_seq")
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -24,7 +27,7 @@ public class WmsItemBrandDO extends BaseDO {
     /**
      * 主键编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 品牌编号

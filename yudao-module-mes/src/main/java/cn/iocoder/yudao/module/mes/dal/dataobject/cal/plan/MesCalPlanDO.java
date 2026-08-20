@@ -6,6 +6,7 @@ import cn.iocoder.yudao.module.mes.enums.cal.MesCalShiftMethodEnum;
 import cn.iocoder.yudao.module.mes.enums.cal.MesCalShiftTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -30,7 +31,7 @@ public class MesCalPlanDO extends BaseDO {
     /**
      * 计划编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 计划编码

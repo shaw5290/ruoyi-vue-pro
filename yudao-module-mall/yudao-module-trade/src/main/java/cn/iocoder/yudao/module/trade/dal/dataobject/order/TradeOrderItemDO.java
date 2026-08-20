@@ -10,7 +10,9 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.Jackson3TypeHandler;
 import lombok.Data;
 
-import java.io.Serializable;
+import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.util.List;
 
 /**
@@ -27,7 +29,8 @@ public class TradeOrderItemDO extends BaseDO {
     /**
      * 编号
      */
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+        private Long id;
     /**
      * 用户编号
      *

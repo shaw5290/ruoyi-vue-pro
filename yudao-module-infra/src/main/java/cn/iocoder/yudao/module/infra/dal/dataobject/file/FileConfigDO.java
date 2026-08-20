@@ -16,9 +16,13 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.AbstractJsonTypeHandler;
 import lombok.*;
+import org.dromara.autotable.annotation.ColumnType;
 import tools.jackson.core.type.TypeReference;
-
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.lang.reflect.Field;
+
 
 /**
  * 文件配置表
@@ -39,7 +43,9 @@ public class FileConfigDO extends BaseDO {
     /**
      * 配置编号，数据库自增
      */
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+
+        private Long id;
     /**
      * 配置名
      */
@@ -65,6 +71,7 @@ public class FileConfigDO extends BaseDO {
      * 支付渠道配置
      */
     @TableField(typeHandler = FileClientConfigTypeHandler.class)
+    @ColumnType("text")
     private FileClientConfig config;
 
     public static class FileClientConfigTypeHandler extends AbstractJsonTypeHandler<Object> {

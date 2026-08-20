@@ -5,6 +5,7 @@ import cn.iocoder.yudao.module.iot.enums.ota.IotOtaTaskDeviceScopeEnum;
 import cn.iocoder.yudao.module.iot.enums.ota.IotOtaTaskStatusEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,7 +28,7 @@ public class IotOtaTaskDO extends BaseDO {
     /**
      * 任务编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 任务名称

@@ -11,7 +11,9 @@ import com.baomidou.mybatisplus.extension.handlers.Jackson3TypeHandler;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.util.List;
 
 /**
@@ -31,7 +33,9 @@ public class SmsTemplateDO extends BaseDO {
     /**
      * 自增编号
      */
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+
+        private Long id;
 
     // ========= 模板相关字段 =========
 

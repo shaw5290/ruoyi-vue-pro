@@ -10,6 +10,10 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import org.dromara.autotable.annotation.ColumnType;
+
 /**
  * 定时任务的执行日志
  *
@@ -29,7 +33,9 @@ public class JobLogDO extends BaseDO {
     /**
      * 日志编号
      */
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+
+        private Long id;
     /**
      * 任务编号
      *
@@ -79,6 +85,7 @@ public class JobLogDO extends BaseDO {
      * 成功时，使用 {@link JobHandler#execute(String)} 的结果
      * 失败时，使用 {@link JobHandler#execute(String)} 的异常堆栈
      */
+    @ColumnType("text")
     private String result;
 
 }

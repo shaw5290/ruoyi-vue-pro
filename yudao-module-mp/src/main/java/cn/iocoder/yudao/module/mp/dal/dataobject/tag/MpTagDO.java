@@ -4,7 +4,9 @@ import cn.iocoder.yudao.module.mp.dal.dataobject.account.MpAccountDO;
 import lombok.*;
 
 import com.baomidou.mybatisplus.annotation.*;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import me.chanjar.weixin.mp.bean.tag.WxUserTag;
 
 /**
@@ -25,7 +27,7 @@ public class MpTagDO extends BaseDO {
     /**
      * 主键
      */
-    @TableId(type = IdType.INPUT)
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 公众号标签 id

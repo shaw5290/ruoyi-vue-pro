@@ -3,6 +3,7 @@ package cn.iocoder.yudao.module.trade.dal.dataobject.brokerage;
 import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -28,7 +29,7 @@ public class BrokerageUserDO extends BaseDO {
      * <p>
      * 对应 MemberUserDO 的 id 字段
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**

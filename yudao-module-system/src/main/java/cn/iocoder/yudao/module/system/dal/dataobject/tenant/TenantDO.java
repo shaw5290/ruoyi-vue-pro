@@ -12,6 +12,10 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import org.dromara.autotable.annotation.ColumnType;
 
 /**
  * 租户 DO
@@ -37,7 +41,9 @@ public class TenantDO extends BaseDO {
     /**
      * 租户编号，自增
      */
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+
+        private Long id;
     /**
      * 租户名，唯一
      */
@@ -69,6 +75,7 @@ public class TenantDO extends BaseDO {
      * 2. 为什么是数组，考虑到管理后台、会员前台都有独立的域名，又或者多个管理后台
      */
     @TableField(typeHandler = StringListTypeHandler.class)
+    @ColumnType("text")
     private List<String> websites;
     /**
      * 租户套餐编号

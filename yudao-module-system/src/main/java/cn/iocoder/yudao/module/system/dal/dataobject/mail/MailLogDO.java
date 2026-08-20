@@ -15,6 +15,10 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import org.dromara.autotable.annotation.ColumnType;
 
 /**
  * 邮箱日志 DO
@@ -37,7 +41,9 @@ public class MailLogDO extends BaseDO implements Serializable {
     /**
      * 日志编号，自增
      */
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+
+        private Long id;
 
     /**
      * 用户编码
@@ -107,6 +113,7 @@ public class MailLogDO extends BaseDO implements Serializable {
      *
      * 基于 {@link MailTemplateDO#getContent()} 格式化后的内容
      */
+    @ColumnType("text")
     private String templateContent;
     /**
      * 模版参数
@@ -134,6 +141,7 @@ public class MailLogDO extends BaseDO implements Serializable {
     /**
      * 发送异常
      */
+    @ColumnType("text")
     private String sendException;
 
 }

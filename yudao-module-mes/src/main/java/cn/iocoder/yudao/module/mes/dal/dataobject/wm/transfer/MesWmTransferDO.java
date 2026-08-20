@@ -5,6 +5,7 @@ import cn.iocoder.yudao.module.mes.enums.wm.MesWmTransferStatusEnum;
 import cn.iocoder.yudao.module.mes.enums.wm.MesWmTransferTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -29,7 +30,7 @@ public class MesWmTransferDO extends BaseDO {
     /**
      * 编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 转移单编号

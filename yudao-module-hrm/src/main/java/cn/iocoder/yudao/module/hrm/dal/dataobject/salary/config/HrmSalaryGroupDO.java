@@ -6,6 +6,7 @@ import cn.iocoder.yudao.module.system.dal.dataobject.dept.DeptDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import lombok.AllArgsConstructor;
@@ -42,7 +43,7 @@ public class HrmSalaryGroupDO extends BaseDO {
      */
     public static final String DEFAULT_CHANGE_RULE = "按转正/调薪前后的工资混合计算";
 
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 薪资组名称

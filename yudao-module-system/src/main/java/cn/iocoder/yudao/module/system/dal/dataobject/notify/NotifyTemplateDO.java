@@ -6,11 +6,14 @@ import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnore;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.Jackson3TypeHandler;
 import lombok.*;
 
 import java.util.List;
+
+import org.dromara.autotable.annotation.ColumnType;
 
 /**
  * 站内信模版 DO
@@ -31,7 +34,7 @@ public class NotifyTemplateDO extends BaseDO {
     /**
      * ID
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 模版名称
@@ -54,6 +57,7 @@ public class NotifyTemplateDO extends BaseDO {
     /**
      * 模版内容
      */
+    @ColumnType("text")
     private String content;
     /**
      * 参数数组

@@ -9,6 +9,7 @@ import cn.iocoder.yudao.module.hrm.enums.performance.plan.HrmPerformanceReviewVi
 import cn.iocoder.yudao.module.hrm.enums.performance.plan.HrmPerformanceStageTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -32,7 +33,7 @@ public class HrmPerformanceAssessmentStageDO extends BaseDO {
     /**
      * 考核阶段编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 员工绩效考核编号

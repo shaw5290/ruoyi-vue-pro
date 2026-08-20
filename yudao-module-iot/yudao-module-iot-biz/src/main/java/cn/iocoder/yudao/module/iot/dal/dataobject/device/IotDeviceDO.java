@@ -8,6 +8,7 @@ import cn.iocoder.yudao.module.iot.core.enums.device.IotDeviceStateEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -36,7 +37,7 @@ public class IotDeviceDO extends TenantBaseDO {
     /**
      * 设备 ID，主键，自增
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 设备名称，在产品内唯一，用于标识设备

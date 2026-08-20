@@ -6,10 +6,13 @@ import cn.iocoder.yudao.framework.common.pojo.CommonResult;
 import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
 import java.time.LocalDateTime;
+
+import org.dromara.autotable.annotation.ColumnType;
 
 /**
  * API 访问日志
@@ -39,7 +42,7 @@ public class ApiAccessLogDO extends BaseDO {
     /**
      * 编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 链路追踪编号
@@ -80,10 +83,12 @@ public class ApiAccessLogDO extends BaseDO {
      * query: Query String
      * body: Quest Body
      */
+    @ColumnType("text")
     private String requestParams;
     /**
      * 响应结果
      */
+    @ColumnType("text")
     private String responseBody;
     /**
      * 用户 IP

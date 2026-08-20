@@ -6,6 +6,7 @@ import cn.iocoder.yudao.module.iot.core.enums.modbus.IotModbusByteOrderEnum;
 import cn.iocoder.yudao.module.iot.core.enums.modbus.IotModbusRawDataTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -27,7 +28,7 @@ public class IotDeviceModbusPointDO extends TenantBaseDO {
     /**
      * 主键
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 设备编号

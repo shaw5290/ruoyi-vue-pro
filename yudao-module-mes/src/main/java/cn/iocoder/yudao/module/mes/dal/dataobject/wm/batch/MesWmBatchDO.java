@@ -10,6 +10,7 @@ import cn.iocoder.yudao.module.mes.dal.dataobject.pro.workorder.MesProWorkOrderD
 import cn.iocoder.yudao.module.mes.dal.dataobject.tm.tool.MesTmToolDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -33,7 +34,7 @@ public class MesWmBatchDO extends BaseDO {
     /**
      * 批次ID
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 批次编码

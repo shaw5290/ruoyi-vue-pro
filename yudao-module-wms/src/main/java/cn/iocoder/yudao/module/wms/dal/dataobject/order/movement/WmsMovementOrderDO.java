@@ -10,6 +10,8 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnore;
+import com.baomidou.mybatisplus.annotation.IdType;
 
 /**
  * WMS 移库单 DO
@@ -17,6 +19,7 @@ import java.time.LocalDateTime;
  * @author 芋道源码
  */
 @TableName("wms_movement_order")
+@TenantIgnore
 @KeySequence("wms_movement_order_seq")
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -29,7 +32,7 @@ public class WmsMovementOrderDO extends BaseDO {
     /**
      * 主键编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 移库单号

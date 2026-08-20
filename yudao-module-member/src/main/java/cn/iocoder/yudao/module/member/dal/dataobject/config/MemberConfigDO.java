@@ -3,6 +3,7 @@ package cn.iocoder.yudao.module.member.dal.dataobject.config;
 import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -24,7 +25,7 @@ public class MemberConfigDO extends BaseDO {
     /**
      * 自增主键
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 积分抵扣开关

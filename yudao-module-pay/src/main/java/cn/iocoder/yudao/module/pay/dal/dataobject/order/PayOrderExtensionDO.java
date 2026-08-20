@@ -9,7 +9,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.Jackson3TypeHandler;
 import lombok.*;
-
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.util.Map;
 
 /**
@@ -32,7 +34,9 @@ public class PayOrderExtensionDO extends BaseDO {
     /**
      * 订单拓展编号，数据库自增
      */
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+
+        private Long id;
     /**
      * 外部订单号，根据规则生成
      *

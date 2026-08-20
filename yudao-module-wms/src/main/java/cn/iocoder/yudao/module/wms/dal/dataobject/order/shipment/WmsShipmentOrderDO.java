@@ -12,6 +12,8 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnore;
+import com.baomidou.mybatisplus.annotation.IdType;
 
 /**
  * WMS 出库单 DO
@@ -19,6 +21,7 @@ import java.time.LocalDateTime;
  * @author 芋道源码
  */
 @TableName("wms_shipment_order")
+@TenantIgnore
 @KeySequence("wms_shipment_order_seq")
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -31,7 +34,7 @@ public class WmsShipmentOrderDO extends BaseDO {
     /**
      * 主键编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 出库单号

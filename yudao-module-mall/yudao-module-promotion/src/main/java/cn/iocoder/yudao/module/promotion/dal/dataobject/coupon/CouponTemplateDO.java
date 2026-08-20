@@ -10,6 +10,7 @@ import cn.iocoder.yudao.module.promotion.enums.coupon.CouponTemplateValidityType
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -43,7 +44,7 @@ public class CouponTemplateDO extends BaseDO {
     /**
      * 模板编号，自增唯一
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 优惠劵名

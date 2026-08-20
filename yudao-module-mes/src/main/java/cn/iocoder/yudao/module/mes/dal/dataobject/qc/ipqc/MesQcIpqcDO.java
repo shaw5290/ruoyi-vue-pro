@@ -10,6 +10,7 @@ import cn.iocoder.yudao.module.mes.enums.qc.MesQcSourceDocTypeEnum;
 import cn.iocoder.yudao.module.mes.enums.qc.MesQcStatusEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -35,7 +36,7 @@ public class MesQcIpqcDO extends BaseDO {
     /**
      * 编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 检验单编号

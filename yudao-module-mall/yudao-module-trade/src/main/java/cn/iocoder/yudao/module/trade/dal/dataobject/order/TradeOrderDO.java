@@ -19,7 +19,9 @@ import com.baomidou.mybatisplus.extension.handlers.Jackson3TypeHandler;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.List;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.util.Map;
 
 /**
@@ -46,7 +48,8 @@ public class TradeOrderDO extends BaseDO {
     /**
      * 订单编号，主键自增
      */
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+        private Long id;
     /**
      * 订单流水号
      *

@@ -3,6 +3,7 @@ package cn.iocoder.yudao.module.erp.dal.dataobject.sale;
 import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -26,7 +27,7 @@ public class ErpCustomerDO extends BaseDO {
     /**
      * 客户编号
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 客户名称

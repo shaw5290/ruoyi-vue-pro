@@ -6,6 +6,7 @@ import cn.iocoder.yudao.module.pay.enums.demo.PayDemoWithdrawStatusEnum;
 import cn.iocoder.yudao.module.pay.enums.demo.PayDemoWithdrawTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -24,7 +25,7 @@ public class PayDemoWithdrawDO extends BaseDO {
     /**
      * 提现单编号，自增
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
