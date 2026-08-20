@@ -79,8 +79,8 @@
         <awssdk.version>2.46.17</awssdk.version>
         <justauth.version>1.16.7</justauth.version>
         <justauth-starter.version>1.4.0</justauth-starter.version>
-        <jimureport.version>2.3.4</jimureport.version>
-        <jimubi.version>2.3.2</jimubi.version>
+        <jimureport.version>2.5.0</jimureport.version>
+        <jimubi.version>2.5.0</jimubi.version>
         <weixin-java.version>4.8.4-20260623.211820</weixin-java.version>
         <bouncycastle.version>1.80</bouncycastle.version>
         <alipay-sdk-java.version>4.40.865.ALL</alipay-sdk-java.version>
@@ -731,7 +731,7 @@
             <!-- 积木报表-->
             <dependency>
                 <groupId>org.jeecgframework.jimureport</groupId>
-                <artifactId>jimureport-spring-boot3-starter</artifactId>
+                <artifactId>jimureport-spring-boot4-starter</artifactId>
                 <version>${jimureport.version}</version>
                 <exclusions>
                     <exclusion>
@@ -742,7 +742,7 @@
             </dependency>
             <dependency>
                 <groupId>org.jeecgframework.jimureport</groupId>
-                <artifactId>jimubi-spring-boot3-starter</artifactId>
+                <artifactId>jimubi-spring-boot4-starter</artifactId>
                 <version>${jimubi.version}</version>
                 <exclusions>
                     <exclusion>
