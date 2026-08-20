@@ -26,6 +26,7 @@
         <module>yudao-module-iot</module>
         <module>yudao-module-mes</module>
         <module>yudao-module-wms</module>
+        <module>yudao-module-project</module>
         <module>yudao-module-hrm</module>
         <module>yudao-module-fms</module>
         <module>yudao-module-im</module>
