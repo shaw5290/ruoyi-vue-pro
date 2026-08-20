@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.wms.dal.dataobject.inventory;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.wms.dal.dataobject.md.item.WmsItemSkuDO;
 import cn.iocoder.yudao.module.wms.dal.dataobject.md.warehouse.WmsWarehouseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -9,7 +9,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
 import java.math.BigDecimal;
-import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnore;
 import com.baomidou.mybatisplus.annotation.IdType;
 
 /**
@@ -18,7 +17,6 @@ import com.baomidou.mybatisplus.annotation.IdType;
  * @author 芋道源码
  */
 @TableName("wms_inventory")
-@TenantIgnore
 @KeySequence("wms_inventory_seq")
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -26,7 +24,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class WmsInventoryDO extends BaseDO {
+public class WmsInventoryDO extends TenantBaseDO {
 
     /**
      * 主键编号

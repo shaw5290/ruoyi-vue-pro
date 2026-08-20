@@ -1,11 +1,10 @@
 package cn.iocoder.yudao.module.wms.dal.dataobject.md.warehouse;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
-import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnore;
 import com.baomidou.mybatisplus.annotation.IdType;
 
 /**
@@ -14,7 +13,6 @@ import com.baomidou.mybatisplus.annotation.IdType;
  * @author 芋道源码
  */
 @TableName("wms_warehouse")
-@TenantIgnore
 @KeySequence("wms_warehouse_seq")
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -22,7 +20,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class WmsWarehouseDO extends BaseDO {
+public class WmsWarehouseDO extends TenantBaseDO {
 
     /**
      * 主键编号

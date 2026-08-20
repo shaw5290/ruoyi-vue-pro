@@ -1,12 +1,11 @@
 package cn.iocoder.yudao.module.wms.dal.dataobject.md.merchant;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.wms.enums.md.WmsMerchantTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
-import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnore;
 import com.baomidou.mybatisplus.annotation.IdType;
 
 /**
@@ -15,7 +14,6 @@ import com.baomidou.mybatisplus.annotation.IdType;
  * @author 芋道源码
  */
 @TableName("wms_merchant")
-@TenantIgnore
 @KeySequence("wms_merchant_seq")
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -23,7 +21,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class WmsMerchantDO extends BaseDO {
+public class WmsMerchantDO extends TenantBaseDO {
 
     /**
      * 主键编号

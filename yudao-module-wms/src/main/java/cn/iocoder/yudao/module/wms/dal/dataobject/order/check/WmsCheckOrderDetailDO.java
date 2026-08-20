@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.wms.dal.dataobject.order.check;
 
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.yudao.module.wms.dal.dataobject.inventory.WmsInventoryDO;
 import cn.iocoder.yudao.module.wms.dal.dataobject.md.item.WmsItemSkuDO;
 import cn.iocoder.yudao.module.wms.dal.dataobject.md.warehouse.WmsWarehouseDO;
@@ -11,7 +11,6 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnore;
 import com.baomidou.mybatisplus.annotation.IdType;
 
 /**
@@ -20,7 +19,6 @@ import com.baomidou.mybatisplus.annotation.IdType;
  * @author 芋道源码
  */
 @TableName("wms_check_order_detail")
-@TenantIgnore
 @KeySequence("wms_check_order_detail_seq")
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -28,7 +26,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class WmsCheckOrderDetailDO extends BaseDO {
+public class WmsCheckOrderDetailDO extends TenantBaseDO {
 
     /**
      * 主键编号
