@@ -66,6 +66,10 @@ FROM (
     UNION ALL SELECT '方案更新', 'project:solution:update', 7
     UNION ALL SELECT '方案删除', 'project:solution:delete', 8
     UNION ALL SELECT '方案采用', 'project:solution:adopt', 9
+    UNION ALL SELECT 'BOM 模块库查询', 'bom:library:query', 10
+    UNION ALL SELECT 'BOM 模块库维护', 'bom:library:write', 11
+    UNION ALL SELECT '方案 BOM 查询', 'bom:selection:query', 12
+    UNION ALL SELECT '方案 BOM 配置', 'bom:selection:write', 13
 ) permission_data
 WHERE NOT EXISTS (
     SELECT 1 FROM `system_menu` existing
@@ -81,8 +85,52 @@ SET `parent_id` = @project_info_menu_id,
 WHERE `permission` IN (
     'project:info:query', 'project:info:create', 'project:info:update', 'project:info:delete',
     'project:solution:query', 'project:solution:create', 'project:solution:update',
-    'project:solution:delete', 'project:solution:adopt'
+    'project:solution:delete', 'project:solution:adopt',
+    'bom:library:query', 'bom:library:write', 'bom:selection:query', 'bom:selection:write'
 ) AND `deleted` = b'0';
+
+-- 4. 将项目权限映射到项目内置 BOM 权限
+-- 已有“项目查询”的角色获得 BOM 查询；已有“项目更新”的角色获得 BOM 维护。
+-- 使用 NOT EXISTS 保证脚本可重复执行，不会产生重复授权。
+INSERT INTO `system_role_menu`
+(`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`)
+SELECT DISTINCT project_grant.`role_id`, bom_query.`id`, '1', NOW(), '1', NOW(), b'0', project_grant.`tenant_id`
+FROM `system_role_menu` project_grant
+JOIN `system_menu` project_query
+  ON project_query.`id` = project_grant.`menu_id`
+ AND project_query.`permission` = 'project:info:query'
+ AND project_query.`deleted` = b'0'
+JOIN `system_menu` bom_query
+  ON bom_query.`permission` IN ('bom:library:query', 'bom:selection:query')
+ AND bom_query.`deleted` = b'0'
+WHERE project_grant.`deleted` = b'0'
+  AND NOT EXISTS (
+    SELECT 1 FROM `system_role_menu` existing
+    WHERE existing.`role_id` = project_grant.`role_id`
+      AND existing.`menu_id` = bom_query.`id`
+      AND existing.`tenant_id` = project_grant.`tenant_id`
+      AND existing.`deleted` = b'0'
+  );
+
+INSERT INTO `system_role_menu`
+(`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`)
+SELECT DISTINCT project_grant.`role_id`, bom_write.`id`, '1', NOW(), '1', NOW(), b'0', project_grant.`tenant_id`
+FROM `system_role_menu` project_grant
+JOIN `system_menu` project_update
+  ON project_update.`id` = project_grant.`menu_id`
+ AND project_update.`permission` = 'project:info:update'
+ AND project_update.`deleted` = b'0'
+JOIN `system_menu` bom_write
+  ON bom_write.`permission` IN ('bom:library:write', 'bom:selection:write')
+ AND bom_write.`deleted` = b'0'
+WHERE project_grant.`deleted` = b'0'
+  AND NOT EXISTS (
+    SELECT 1 FROM `system_role_menu` existing
+    WHERE existing.`role_id` = project_grant.`role_id`
+      AND existing.`menu_id` = bom_write.`id`
+      AND existing.`tenant_id` = project_grant.`tenant_id`
+      AND existing.`deleted` = b'0'
+  );
 
 COMMIT;
 
@@ -92,3 +140,14 @@ FROM `system_menu`
 WHERE `id` IN (@project_menu_id, @project_info_menu_id)
    OR `parent_id` IN (@project_menu_id, @project_info_menu_id)
 ORDER BY `type`, `sort`, `id`;
+
+-- 检查 BOM 权限及角色授权
+SELECT menu.`id`, menu.`name`, menu.`permission`, role_menu.`role_id`, role_menu.`tenant_id`
+FROM `system_menu` menu
+LEFT JOIN `system_role_menu` role_menu
+  ON role_menu.`menu_id` = menu.`id` AND role_menu.`deleted` = b'0'
+WHERE menu.`permission` IN (
+  'bom:library:query', 'bom:library:write', 'bom:selection:query', 'bom:selection:write'
+)
+  AND menu.`deleted` = b'0'
+ORDER BY menu.`permission`, role_menu.`tenant_id`, role_menu.`role_id`;

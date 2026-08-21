@@ -5,6 +5,7 @@ import cn.iocoder.yudao.framework.common.util.object.BeanUtils;
 import cn.iocoder.yudao.module.project.controller.admin.solution.vo.ProjectSolutionRespVO;
 import cn.iocoder.yudao.module.project.controller.admin.solution.vo.ProjectSolutionSaveReqVO;
 import cn.iocoder.yudao.module.project.service.solution.ProjectSolutionService;
+import cn.iocoder.yudao.module.project.service.solution.dto.ProjectSolutionSaveReqDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
@@ -30,14 +31,15 @@ public class ProjectSolutionController {
     @Operation(summary = "创建项目方案")
     @PreAuthorize("@ss.hasPermission('project:solution:create')")
     public CommonResult<Long> create(@Valid @RequestBody ProjectSolutionSaveReqVO reqVO) {
-        return success(projectSolutionService.createProjectSolution(reqVO));
+        return success(projectSolutionService.createProjectSolution(
+                BeanUtils.toBean(reqVO, ProjectSolutionSaveReqDTO.class)));
     }
 
     @PutMapping("/update")
     @Operation(summary = "更新项目方案")
     @PreAuthorize("@ss.hasPermission('project:solution:update')")
     public CommonResult<Boolean> update(@Valid @RequestBody ProjectSolutionSaveReqVO reqVO) {
-        projectSolutionService.updateProjectSolution(reqVO);
+        projectSolutionService.updateProjectSolution(BeanUtils.toBean(reqVO, ProjectSolutionSaveReqDTO.class));
         return success(true);
     }
 

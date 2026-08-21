@@ -2,10 +2,10 @@ package cn.iocoder.yudao.module.project.service.solution;
 
 import cn.hutool.core.util.ObjUtil;
 import cn.iocoder.yudao.framework.common.util.object.BeanUtils;
-import cn.iocoder.yudao.module.project.controller.admin.solution.vo.ProjectSolutionSaveReqVO;
 import cn.iocoder.yudao.module.project.dal.dataobject.solution.ProjectSolutionDO;
 import cn.iocoder.yudao.module.project.dal.mysql.solution.ProjectSolutionMapper;
 import cn.iocoder.yudao.module.project.service.project.ProjectService;
+import cn.iocoder.yudao.module.project.service.solution.dto.ProjectSolutionSaveReqDTO;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,21 +26,21 @@ public class ProjectSolutionServiceImpl implements ProjectSolutionService {
     private ProjectService projectService;
 
     @Override
-    public Long createProjectSolution(ProjectSolutionSaveReqVO reqVO) {
-        projectService.validateProjectExists(reqVO.getProjectId());
-        validateNameUnique(null, reqVO.getProjectId(), reqVO.getName());
-        ProjectSolutionDO solution = BeanUtils.toBean(reqVO, ProjectSolutionDO.class)
+    public Long createProjectSolution(ProjectSolutionSaveReqDTO reqDTO) {
+        projectService.validateProjectExists(reqDTO.getProjectId());
+        validateNameUnique(null, reqDTO.getProjectId(), reqDTO.getName());
+        ProjectSolutionDO solution = BeanUtils.toBean(reqDTO, ProjectSolutionDO.class)
                 .setAdopted(false);
         projectSolutionMapper.insert(solution);
         return solution.getId();
     }
 
     @Override
-    public void updateProjectSolution(ProjectSolutionSaveReqVO reqVO) {
-        ProjectSolutionDO current = validateExists(reqVO.getId());
-        projectService.validateProjectExists(reqVO.getProjectId());
-        validateNameUnique(reqVO.getId(), reqVO.getProjectId(), reqVO.getName());
-        ProjectSolutionDO updateObj = BeanUtils.toBean(reqVO, ProjectSolutionDO.class)
+    public void updateProjectSolution(ProjectSolutionSaveReqDTO reqDTO) {
+        ProjectSolutionDO current = validateExists(reqDTO.getId());
+        projectService.validateProjectExists(reqDTO.getProjectId());
+        validateNameUnique(reqDTO.getId(), reqDTO.getProjectId(), reqDTO.getName());
+        ProjectSolutionDO updateObj = BeanUtils.toBean(reqDTO, ProjectSolutionDO.class)
                 .setAdopted(current.getAdopted());
         projectSolutionMapper.updateById(updateObj);
     }
@@ -82,6 +82,11 @@ public class ProjectSolutionServiceImpl implements ProjectSolutionService {
     @Override
     public ProjectSolutionDO getProjectSolution(Long id) {
         return projectSolutionMapper.selectById(id);
+    }
+
+    @Override
+    public ProjectSolutionDO validateProjectSolutionExists(Long id) {
+        return validateExists(id);
     }
 
     @Override
