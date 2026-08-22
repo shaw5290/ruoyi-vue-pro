@@ -3,6 +3,7 @@ package cn.iocoder.yudao.module.project.bom.dal.mysql;
 import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
 import cn.iocoder.yudao.framework.mybatis.core.query.LambdaQueryWrapperX;
 import cn.iocoder.yudao.module.project.bom.dal.dataobject.BomItemDO;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
@@ -12,6 +13,12 @@ public interface BomItemMapper extends BaseMapperX<BomItemDO> {
         return selectList(new LambdaQueryWrapperX<BomItemDO>()
                 .eq(BomItemDO::getBomVariantId, variantId)
                 .orderByAsc(BomItemDO::getSort).orderByAsc(BomItemDO::getId));
+    }
+
+    default int updateVariantId(Long sourceVariantId, Long targetVariantId) {
+        return update(new BomItemDO().setBomVariantId(targetVariantId),
+                new LambdaUpdateWrapper<BomItemDO>()
+                        .eq(BomItemDO::getBomVariantId, sourceVariantId));
     }
 }
 

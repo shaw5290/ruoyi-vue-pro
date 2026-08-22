@@ -3,6 +3,50 @@
 
 START TRANSACTION;
 
+-- 0. 项目 BOM 物料单位字典。ID 使用数据库自增值，脚本可重复执行。
+INSERT INTO `system_dict_type`
+(`name`, `type`, `status`, `remark`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `deleted_time`)
+SELECT '项目 BOM 物料单位', 'project_bom_unit', 0, '项目 BOM 物料的计量单位',
+       '1', NOW(), '1', NOW(), b'0', NULL
+WHERE NOT EXISTS (
+    SELECT 1 FROM `system_dict_type`
+    WHERE `type` = 'project_bom_unit' AND `deleted` = b'0'
+);
+
+INSERT INTO `system_dict_data`
+(`sort`, `label`, `value`, `dict_type`, `status`, `color_type`, `css_class`, `remark`,
+ `creator`, `create_time`, `updater`, `update_time`, `deleted`)
+SELECT unit_data.`sort`, unit_data.`label`, unit_data.`value`, 'project_bom_unit', 0, '', '', '',
+       '1', NOW(), '1', NOW(), b'0'
+FROM (
+    SELECT 1 AS `sort`, '件' AS `label`, '件' AS `value`
+    UNION ALL SELECT 2, '个', '个'
+    UNION ALL SELECT 3, '套', '套'
+    UNION ALL SELECT 4, '台', '台'
+    UNION ALL SELECT 5, '只', '只'
+    UNION ALL SELECT 6, '块', '块'
+    UNION ALL SELECT 7, '组', '组'
+    UNION ALL SELECT 8, '根', '根'
+    UNION ALL SELECT 9, '条', '条'
+    UNION ALL SELECT 10, '张', '张'
+    UNION ALL SELECT 11, '卷', '卷'
+    UNION ALL SELECT 12, '包', '包'
+    UNION ALL SELECT 13, '箱', '箱'
+    UNION ALL SELECT 14, '米', '米'
+    UNION ALL SELECT 15, '厘米', '厘米'
+    UNION ALL SELECT 16, '毫米', '毫米'
+    UNION ALL SELECT 17, '千克', '千克'
+    UNION ALL SELECT 18, '克', '克'
+    UNION ALL SELECT 19, '升', '升'
+    UNION ALL SELECT 20, '毫升', '毫升'
+) unit_data
+WHERE NOT EXISTS (
+    SELECT 1 FROM `system_dict_data` existing
+    WHERE existing.`dict_type` = 'project_bom_unit'
+      AND existing.`value` = unit_data.`value`
+      AND existing.`deleted` = b'0'
+);
+
 -- 1. 插入项目管理根菜单，并获取真实自增 ID
 INSERT INTO `system_menu`
 (`name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`,

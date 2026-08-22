@@ -50,17 +50,22 @@ public class BomLibraryServiceImpl implements BomLibraryService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void deleteGroup(Long id) {
-        validateGroup(id);
-        deleteGroupTree(id, new java.util.HashSet<>());
+        BomGroupDO group = validateGroup(id);
+        if (DEFAULT_GROUP_CODE.equals(group.getCode())) {
+            throw exception(BOM_DEFAULT_GROUP_DELETE_FORBIDDEN);
+        }
+        Long defaultVariantId = getOrCreateGroupStorageVariant(group.getProjectId(), null).getId();
+        deleteGroupTree(id, defaultVariantId, new java.util.HashSet<>());
     }
 
-    private void deleteGroupTree(Long id, java.util.Set<Long> visited) {
+    private void deleteGroupTree(Long id, Long defaultVariantId, java.util.Set<Long> visited) {
         if (!visited.add(id)) throw exception(BOM_GROUP_PARENT_INVALID);
         for (BomGroupDO child : groupMapper.selectListByParentId(id)) {
-            deleteGroupTree(child.getId(), visited);
+            deleteGroupTree(child.getId(), defaultVariantId, visited);
         }
         for (BomGroupVersionDO version : versionMapper.selectListByGroupId(id)) {
             for (BomVariantDO variant : variantMapper.selectListByVersionId(version.getId())) {
+                itemMapper.updateVariantId(variant.getId(), defaultVariantId);
                 deleteVariantData(variant.getId());
             }
             versionMapper.deleteById(version.getId());
