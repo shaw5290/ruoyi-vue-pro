@@ -5,6 +5,7 @@ import cn.iocoder.yudao.framework.common.util.object.BeanUtils;
 import cn.iocoder.yudao.module.project.bom.controller.admin.group.vo.*;
 import cn.iocoder.yudao.module.project.bom.dal.dataobject.*;
 import cn.iocoder.yudao.module.project.bom.dal.mysql.*;
+import cn.iocoder.yudao.module.project.dal.mysql.attachment.ProjectAttachmentMapper;
 import cn.iocoder.yudao.module.project.api.project.ProjectApi;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,7 @@ public class BomLibraryServiceImpl implements BomLibraryService {
     @Resource private ProjectApi projectApi;
     @Resource private BomWmsBomBindingMapper wmsBomBindingMapper;
     @Resource private BomSolutionSelectionMapper selectionMapper;
+    @Resource private ProjectAttachmentMapper attachmentMapper;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -54,14 +56,14 @@ public class BomLibraryServiceImpl implements BomLibraryService {
         if (DEFAULT_GROUP_CODE.equals(group.getCode())) {
             throw exception(BOM_DEFAULT_GROUP_DELETE_FORBIDDEN);
         }
-        Long defaultVariantId = getOrCreateGroupStorageVariant(group.getProjectId(), null).getId();
-        deleteGroupTree(id, defaultVariantId, new java.util.HashSet<>());
+        BomVariantDO defaultVariant = getOrCreateGroupStorageVariant(group.getProjectId(), null);
+        deleteGroupTree(id, defaultVariant.getId(), defaultVariant.getGroupId(), new java.util.HashSet<>());
     }
 
-    private void deleteGroupTree(Long id, Long defaultVariantId, java.util.Set<Long> visited) {
+    private void deleteGroupTree(Long id, Long defaultVariantId, Long defaultGroupId, java.util.Set<Long> visited) {
         if (!visited.add(id)) throw exception(BOM_GROUP_PARENT_INVALID);
         for (BomGroupDO child : groupMapper.selectListByParentId(id)) {
-            deleteGroupTree(child.getId(), defaultVariantId, visited);
+            deleteGroupTree(child.getId(), defaultVariantId, defaultGroupId, visited);
         }
         for (BomGroupVersionDO version : versionMapper.selectListByGroupId(id)) {
             for (BomVariantDO variant : variantMapper.selectListByVersionId(version.getId())) {
@@ -71,6 +73,8 @@ public class BomLibraryServiceImpl implements BomLibraryService {
             versionMapper.deleteById(version.getId());
         }
         selectionMapper.deleteByGroupId(id);
+        // 分组删除后保留附件，与物料一起转移到默认分组。
+        attachmentMapper.moveToGroup(id, defaultGroupId);
         groupMapper.deleteById(id);
     }
 

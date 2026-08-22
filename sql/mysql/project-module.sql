@@ -1,4 +1,4 @@
--- 项目模块菜单与权限。业务表由 AutoTable 根据 ProjectDO、ProjectSolutionDO 创建。
+-- 项目模块菜单与权限。业务表由 AutoTable 根据 ProjectDO、ProjectSolutionDO、ProjectAttachmentDO 等实体创建。
 -- 菜单 ID 使用数据库自增值；脚本可重复执行，并会修复旧脚本产生的错误 parent_id。
 
 START TRANSACTION;
