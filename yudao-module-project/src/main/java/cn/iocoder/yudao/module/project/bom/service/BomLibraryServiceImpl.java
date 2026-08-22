@@ -23,6 +23,10 @@ public class BomLibraryServiceImpl implements BomLibraryService {
     @Resource private BomGroupVersionMapper versionMapper;
     @Resource private BomVariantMapper variantMapper;
     @Resource private BomItemMapper itemMapper;
+    @Resource private BomItemImageMapper itemImageMapper;
+    @Resource private ProjectProductMapper productMapper;
+    @Resource private BomItemProductMapper itemProductMapper;
+    @Resource private BomDocumentMapper documentMapper;
     @Resource private ProjectApi projectApi;
     @Resource private BomWmsBomBindingMapper wmsBomBindingMapper;
     @Resource private BomSolutionSelectionMapper selectionMapper;
@@ -75,6 +79,7 @@ public class BomLibraryServiceImpl implements BomLibraryService {
         selectionMapper.deleteByGroupId(id);
         // 分组删除后保留附件，与物料一起转移到默认分组。
         attachmentMapper.moveToGroup(id, defaultGroupId);
+        documentMapper.moveToGroup(id, defaultGroupId);
         groupMapper.deleteById(id);
     }
 
@@ -171,7 +176,10 @@ public class BomLibraryServiceImpl implements BomLibraryService {
     }
 
     private void deleteVariantData(Long variantId) {
-        for (BomItemDO item : itemMapper.selectListByVariantId(variantId)) itemMapper.deleteById(item.getId());
+        for (BomItemDO item : itemMapper.selectListByVariantId(variantId)) {
+            itemImageMapper.deleteByBomItemId(item.getId());
+            itemMapper.deleteById(item.getId());
+        }
         wmsBomBindingMapper.deleteByProjectBomId(variantId);
         selectionMapper.deleteByVariantId(variantId);
     }
@@ -207,9 +215,148 @@ public class BomLibraryServiceImpl implements BomLibraryService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void deleteItem(Long id) {
         if (itemMapper.selectById(id) == null) throw exception(BOM_ITEM_NOT_EXISTS);
+        itemImageMapper.deleteByBomItemId(id);
+        itemProductMapper.deleteByItemId(id);
         itemMapper.deleteById(id);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Long createItemImage(BomItemImageCreateReqVO reqVO) {
+        if (itemMapper.selectById(reqVO.getBomItemId()) == null) throw exception(BOM_ITEM_NOT_EXISTS);
+        List<BomItemImageDO> images = itemImageMapper.selectListByBomItemId(reqVO.getBomItemId());
+        BomItemImageDO image = BeanUtils.toBean(reqVO, BomItemImageDO.class);
+        image.setPrimaryImage(images.isEmpty());
+        image.setSort(images.size());
+        itemImageMapper.insert(image);
+        return image.getId();
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteItemImage(Long id) {
+        BomItemImageDO image = itemImageMapper.selectById(id);
+        if (image == null) throw exception(BOM_ITEM_IMAGE_NOT_EXISTS);
+        itemImageMapper.deleteById(id);
+        List<BomItemImageDO> remaining = itemImageMapper.selectListByBomItemId(image.getBomItemId());
+        if (!remaining.isEmpty()) {
+            Long primaryId = remaining.stream().filter(item -> Boolean.TRUE.equals(item.getPrimaryImage()))
+                    .map(BomItemImageDO::getId).findFirst().orElse(remaining.get(0).getId());
+            normalizeItemImages(image.getBomItemId(), primaryId);
+        }
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void setPrimaryItemImage(Long id) {
+        BomItemImageDO image = itemImageMapper.selectById(id);
+        if (image == null) throw exception(BOM_ITEM_IMAGE_NOT_EXISTS);
+        normalizeItemImages(image.getBomItemId(), image.getId());
+    }
+
+    @Override
+    public Long saveProduct(ProjectProductSaveReqVO reqVO) {
+        projectApi.validateProjectExists(reqVO.getProjectId());
+        if (reqVO.getId() != null) {
+            ProjectProductDO existing = productMapper.selectById(reqVO.getId());
+            if (existing == null) throw exception(PROJECT_PRODUCT_NOT_EXISTS);
+            if (!existing.getProjectId().equals(reqVO.getProjectId())) {
+                throw exception(PROJECT_PRODUCT_OWNER_MISMATCH);
+            }
+        }
+        ProjectProductDO product = BeanUtils.toBean(reqVO, ProjectProductDO.class);
+        if (product.getEnabled() == null) product.setEnabled(true);
+        if (product.getId() == null) productMapper.insert(product); else productMapper.updateById(product);
+        return product.getId();
+    }
+
+    @Override
+    public void deleteProduct(Long id) {
+        if (productMapper.selectById(id) == null) throw exception(PROJECT_PRODUCT_NOT_EXISTS);
+        if (itemProductMapper.selectCountByProductId(id) > 0) throw exception(PROJECT_PRODUCT_IN_USE);
+        productMapper.deleteById(id);
+    }
+
+    @Override
+    public List<ProjectProductDO> getProductList(Long projectId, String keyword) {
+        if (projectId != null) projectApi.validateProjectExists(projectId);
+        return productMapper.selectList(projectId, keyword);
+    }
+
+    @Override
+    public void bindItemProduct(Long itemId, Long productId) {
+        BomItemDO item = itemMapper.selectById(itemId);
+        if (item == null) throw exception(BOM_ITEM_NOT_EXISTS);
+        ProjectProductDO product = productMapper.selectById(productId);
+        if (product == null) throw exception(PROJECT_PRODUCT_NOT_EXISTS);
+        BomVariantDO variant = validateVariant(item.getBomVariantId());
+        BomGroupVersionDO version = validateVersion(variant.getGroupVersionId());
+        BomGroupDO group = validateGroup(version.getGroupId());
+        if (!group.getProjectId().equals(product.getProjectId())) {
+            throw exception(PROJECT_PRODUCT_OWNER_MISMATCH);
+        }
+        List<BomItemProductDO> relations = itemProductMapper.selectListByItemId(itemId);
+        if (relations.stream().anyMatch(relation -> productId.equals(relation.getProductId()))) return;
+        itemProductMapper.insert(BomItemProductDO.builder()
+                .bomItemId(itemId).productId(productId).sort(relations.size()).build());
+    }
+
+    @Override
+    public void unbindItemProduct(Long itemId, Long productId) {
+        if (itemMapper.selectById(itemId) == null) throw exception(BOM_ITEM_NOT_EXISTS);
+        itemProductMapper.deleteByItemIdAndProductId(itemId, productId);
+    }
+
+    private void normalizeItemImages(Long bomItemId, Long primaryId) {
+        List<BomItemImageDO> images = itemImageMapper.selectListByBomItemId(bomItemId);
+        images.sort(java.util.Comparator.comparing(image -> !image.getId().equals(primaryId)));
+        for (int index = 0; index < images.size(); index++) {
+            BomItemImageDO image = images.get(index);
+            itemImageMapper.updateById(BomItemImageDO.builder()
+                    .id(image.getId())
+                    .primaryImage(image.getId().equals(primaryId))
+                    .sort(index)
+                    .build());
+        }
+    }
+
+    @Override
+    public Long saveDocument(BomDocumentSaveReqVO reqVO) {
+        validateDocumentOwner(reqVO.getProjectId(), reqVO.getBomGroupId());
+        if (reqVO.getId() != null && documentMapper.selectById(reqVO.getId()) == null) {
+            throw exception(BOM_DOCUMENT_NOT_EXISTS);
+        }
+        BomDocumentDO document = BeanUtils.toBean(reqVO, BomDocumentDO.class);
+        if (document.getSort() == null) document.setSort(0);
+        if (document.getId() == null) documentMapper.insert(document); else documentMapper.updateById(document);
+        return document.getId();
+    }
+
+    @Override
+    public void deleteDocument(Long id) {
+        if (documentMapper.selectById(id) == null) throw exception(BOM_DOCUMENT_NOT_EXISTS);
+        documentMapper.deleteById(id);
+    }
+
+    @Override
+    public List<BomDocumentDO> getDocumentList(Long projectId, Long bomGroupId) {
+        validateDocumentOwner(projectId, bomGroupId);
+        List<BomDocumentDO> documents = documentMapper.selectListByOwner(projectId, bomGroupId);
+        for (BomDocumentDO document : documents) {
+            BomGroupDO group = groupMapper.selectById(document.getBomGroupId());
+            document.setBomGroupName(group == null ? "已删除分组" : group.getName());
+        }
+        return documents;
+    }
+
+    private void validateDocumentOwner(Long projectId, Long bomGroupId) {
+        projectApi.validateProjectExists(projectId);
+        if (bomGroupId == null) return;
+        BomGroupDO group = validateGroup(bomGroupId);
+        if (!projectId.equals(group.getProjectId())) throw exception(BOM_DOCUMENT_OWNER_MISMATCH);
     }
 
     @Override
@@ -233,7 +380,7 @@ public class BomLibraryServiceImpl implements BomLibraryService {
 
     @Override public List<BomItemDO> getItemList(Long variantId) {
         validateVariant(variantId);
-        return itemMapper.selectListByVariantId(variantId);
+        return enrichItemImages(itemMapper.selectListByVariantId(variantId));
     }
 
     @Override
@@ -248,7 +395,20 @@ public class BomLibraryServiceImpl implements BomLibraryService {
         result.sort(java.util.Comparator
                 .comparing(BomItemDO::getSort, java.util.Comparator.nullsLast(Integer::compareTo))
                 .thenComparing(BomItemDO::getId, java.util.Comparator.nullsLast(Long::compareTo)));
-        return result;
+        return enrichItemImages(result);
+    }
+
+    private List<BomItemDO> enrichItemImages(List<BomItemDO> items) {
+        for (BomItemDO item : items) {
+            item.setImages(itemImageMapper.selectListByBomItemId(item.getId()));
+            List<ProjectProductDO> products = new java.util.ArrayList<>();
+            for (BomItemProductDO relation : itemProductMapper.selectListByItemId(item.getId())) {
+                ProjectProductDO product = productMapper.selectById(relation.getProductId());
+                if (product != null) products.add(product);
+            }
+            item.setProducts(products);
+        }
+        return items;
     }
 
     @Override

@@ -15,6 +15,17 @@ public interface BomLibraryService {
     List<BomVariantDO> getVariantList(Long versionId);
     Long saveItem(BomItemSaveReqVO reqVO);
     void deleteItem(Long id);
+    Long createItemImage(BomItemImageCreateReqVO reqVO);
+    void deleteItemImage(Long id);
+    void setPrimaryItemImage(Long id);
+    Long saveProduct(ProjectProductSaveReqVO reqVO);
+    void deleteProduct(Long id);
+    List<ProjectProductDO> getProductList(Long projectId, String keyword);
+    void bindItemProduct(Long itemId, Long productId);
+    void unbindItemProduct(Long itemId, Long productId);
+    Long saveDocument(BomDocumentSaveReqVO reqVO);
+    void deleteDocument(Long id);
+    List<BomDocumentDO> getDocumentList(Long projectId, Long bomGroupId);
     void bindWmsItem(BomItemBindWmsReqVO reqVO);
     void unbindWmsItem(Long id);
     List<BomItemDO> getItemList(Long variantId);

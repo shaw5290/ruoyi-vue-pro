@@ -53,6 +53,64 @@ public class BomLibraryController {
     @DeleteMapping("/item/delete") @Operation(summary = "删除 BOM 物料")
     @PreAuthorize("@ss.hasPermission('bom:library:write')")
     public CommonResult<Boolean> deleteItem(@RequestParam Long id) { service.deleteItem(id); return success(true); }
+    @PostMapping("/item/image/create") @Operation(summary = "新增 BOM 物料图片")
+    @PreAuthorize("@ss.hasPermission('bom:library:write')")
+    public CommonResult<Long> createItemImage(@Valid @RequestBody BomItemImageCreateReqVO reqVO) {
+        return success(service.createItemImage(reqVO));
+    }
+    @DeleteMapping("/item/image/delete") @Operation(summary = "删除 BOM 物料图片")
+    @PreAuthorize("@ss.hasPermission('bom:library:write')")
+    public CommonResult<Boolean> deleteItemImage(@RequestParam Long id) {
+        service.deleteItemImage(id); return success(true);
+    }
+    @PutMapping("/item/image/set-primary") @Operation(summary = "设置 BOM 物料首图")
+    @PreAuthorize("@ss.hasPermission('bom:library:write')")
+    public CommonResult<Boolean> setPrimaryItemImage(@RequestParam Long id) {
+        service.setPrimaryItemImage(id); return success(true);
+    }
+    @PostMapping("/product/save") @Operation(summary = "新增或更新项目商品")
+    @PreAuthorize("@ss.hasPermission('project:product:write') or @ss.hasPermission('bom:library:write')")
+    public CommonResult<Long> saveProduct(@Valid @RequestBody ProjectProductSaveReqVO reqVO) {
+        return success(service.saveProduct(reqVO));
+    }
+    @DeleteMapping("/product/delete") @Operation(summary = "删除项目商品")
+    @PreAuthorize("@ss.hasPermission('project:product:write') or @ss.hasPermission('bom:library:write')")
+    public CommonResult<Boolean> deleteProduct(@RequestParam Long id) {
+        service.deleteProduct(id); return success(true);
+    }
+    @GetMapping("/product/list") @Operation(summary = "获得项目商品列表")
+    @PreAuthorize("@ss.hasPermission('project:product:query') or @ss.hasPermission('project:info:query') or @ss.hasPermission('bom:library:query')")
+    public CommonResult<List<ProjectProductDO>> getProductList(
+            @RequestParam(required = false) Long projectId,
+            @RequestParam(required = false) String keyword) {
+        return success(service.getProductList(projectId, keyword));
+    }
+    @PutMapping("/item/product/bind") @Operation(summary = "BOM 零件关联商品")
+    @PreAuthorize("@ss.hasPermission('bom:library:write')")
+    public CommonResult<Boolean> bindItemProduct(@RequestParam Long itemId, @RequestParam Long productId) {
+        service.bindItemProduct(itemId, productId); return success(true);
+    }
+    @DeleteMapping("/item/product/unbind") @Operation(summary = "BOM 零件解除商品关联")
+    @PreAuthorize("@ss.hasPermission('bom:library:write')")
+    public CommonResult<Boolean> unbindItemProduct(@RequestParam Long itemId, @RequestParam Long productId) {
+        service.unbindItemProduct(itemId, productId); return success(true);
+    }
+    @PostMapping("/document/save") @Operation(summary = "新增或更新 BOM 分组 Markdown 文档")
+    @PreAuthorize("@ss.hasPermission('bom:library:write')")
+    public CommonResult<Long> saveDocument(@Valid @RequestBody BomDocumentSaveReqVO reqVO) {
+        return success(service.saveDocument(reqVO));
+    }
+    @DeleteMapping("/document/delete") @Operation(summary = "删除 BOM 分组文档")
+    @PreAuthorize("@ss.hasPermission('bom:library:write')")
+    public CommonResult<Boolean> deleteDocument(@RequestParam Long id) {
+        service.deleteDocument(id); return success(true);
+    }
+    @GetMapping("/document/list") @Operation(summary = "获得项目文档汇总或指定 BOM 分组文档")
+    @PreAuthorize("@ss.hasPermission('bom:library:query')")
+    public CommonResult<List<BomDocumentDO>> getDocumentList(@RequestParam Long projectId,
+                                                              @RequestParam(required = false) Long bomGroupId) {
+        return success(service.getDocumentList(projectId, bomGroupId));
+    }
     @PutMapping("/item/bind-wms") @Operation(summary = "绑定 WMS 标准物料并重置 BOM 标准字段")
     @PreAuthorize("@ss.hasPermission('bom:library:write') and @ss.hasPermission('wms:item:query')")
     public CommonResult<Boolean> bindWmsItem(@Valid @RequestBody BomItemBindWmsReqVO reqVO) {

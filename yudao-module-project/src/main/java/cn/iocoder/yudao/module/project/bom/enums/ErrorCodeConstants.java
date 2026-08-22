@@ -13,5 +13,11 @@ public interface ErrorCodeConstants {
     ErrorCode BOM_SELECTION_MISMATCH = new ErrorCode(1_062_300_001, "BOM 模块、版本和选项不匹配");
     ErrorCode BOM_WMS_BOM_BINDING_DUPLICATE = new ErrorCode(1_062_400_000, "同一项目 BOM 不能重复关联同一个 WMS BOM");
     ErrorCode BOM_ITEM_NOT_EXISTS = new ErrorCode(1_062_500_000, "BOM 物料不存在");
+    ErrorCode BOM_ITEM_IMAGE_NOT_EXISTS = new ErrorCode(1_062_500_001, "BOM 物料图片不存在");
+    ErrorCode BOM_DOCUMENT_NOT_EXISTS = new ErrorCode(1_062_600_000, "BOM 文档不存在");
+    ErrorCode BOM_DOCUMENT_OWNER_MISMATCH = new ErrorCode(1_062_600_001, "BOM 文档所属项目与分组不一致");
+    ErrorCode PROJECT_PRODUCT_NOT_EXISTS = new ErrorCode(1_062_700_000, "项目商品不存在");
+    ErrorCode PROJECT_PRODUCT_IN_USE = new ErrorCode(1_062_700_001, "商品仍被 BOM 零件关联，不能删除");
+    ErrorCode PROJECT_PRODUCT_OWNER_MISMATCH = new ErrorCode(1_062_700_002, "商品与 BOM 零件不属于同一项目");
 }
 

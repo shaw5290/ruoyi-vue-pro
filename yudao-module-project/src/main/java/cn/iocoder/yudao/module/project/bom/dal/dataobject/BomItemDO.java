@@ -4,6 +4,7 @@ import cn.iocoder.yudao.framework.tenant.core.db.TenantBaseDO;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * 项目 BOM 物料需求快照。
@@ -37,5 +38,11 @@ public class BomItemDO extends TenantBaseDO {
     private String bindingStatus;
     private Integer sort;
     private String remark;
+    /** 物料图片，首图始终位于第一项；仅用于接口返回。 */
+    @TableField(exist = false)
+    private List<BomItemImageDO> images;
+    /** 已关联的可购买商品；仅用于接口返回。 */
+    @TableField(exist = false)
+    private List<ProjectProductDO> products;
 }
 
