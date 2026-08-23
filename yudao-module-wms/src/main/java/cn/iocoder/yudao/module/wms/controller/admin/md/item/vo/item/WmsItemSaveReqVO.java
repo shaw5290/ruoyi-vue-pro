@@ -39,6 +39,17 @@ public class WmsItemSaveReqVO {
     @Schema(description = "商品品牌编号", example = "1")
     private Long brandId;
 
+    @Schema(description = "供应商/商家", example = "官方旗舰店")
+    @Size(max = 200, message = "商家长度不能超过 200 个字符")
+    private String merchant;
+
+    @Schema(description = "采购链接")
+    @Size(max = 5000, message = "采购链接长度不能超过 5000 个字符")
+    private String purchaseUrl;
+
+    @Schema(description = "商品展示图片")
+    private List<@Size(max = 1000, message = "图片地址长度不能超过 1000 个字符") String> imageUrls;
+
     @Schema(description = "备注", example = "备注")
     @Size(max = 255, message = "备注长度不能超过 255 个字符")
     private String remark;

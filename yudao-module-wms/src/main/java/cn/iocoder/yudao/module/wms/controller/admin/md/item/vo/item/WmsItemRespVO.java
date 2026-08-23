@@ -44,6 +44,15 @@ public class WmsItemRespVO {
     @ExcelProperty("商品品牌")
     private String brandName;
 
+    @Schema(description = "供应商/商家")
+    private String merchant;
+
+    @Schema(description = "采购链接")
+    private String purchaseUrl;
+
+    @Schema(description = "商品展示图片")
+    private List<String> imageUrls;
+
     @Schema(description = "备注", example = "备注")
     @ExcelProperty("备注")
     private String remark;

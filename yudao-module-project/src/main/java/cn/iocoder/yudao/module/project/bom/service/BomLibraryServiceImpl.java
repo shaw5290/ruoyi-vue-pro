@@ -7,6 +7,11 @@ import cn.iocoder.yudao.module.project.bom.dal.dataobject.*;
 import cn.iocoder.yudao.module.project.bom.dal.mysql.*;
 import cn.iocoder.yudao.module.project.dal.mysql.attachment.ProjectAttachmentMapper;
 import cn.iocoder.yudao.module.project.api.project.ProjectApi;
+import cn.iocoder.yudao.module.wms.controller.admin.md.item.vo.item.WmsItemListReqVO;
+import cn.iocoder.yudao.module.wms.dal.dataobject.md.item.WmsItemDO;
+import cn.iocoder.yudao.module.wms.dal.dataobject.md.item.WmsItemSkuDO;
+import cn.iocoder.yudao.module.wms.service.md.item.WmsItemService;
+import cn.iocoder.yudao.module.wms.service.md.item.WmsItemSkuService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,6 +36,8 @@ public class BomLibraryServiceImpl implements BomLibraryService {
     @Resource private BomWmsBomBindingMapper wmsBomBindingMapper;
     @Resource private BomSolutionSelectionMapper selectionMapper;
     @Resource private ProjectAttachmentMapper attachmentMapper;
+    @Resource private WmsItemService wmsItemService;
+    @Resource private WmsItemSkuService wmsItemSkuService;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -283,21 +290,16 @@ public class BomLibraryServiceImpl implements BomLibraryService {
     @Override
     public List<ProjectProductDO> getProductList(Long projectId, String keyword) {
         if (projectId != null) projectApi.validateProjectExists(projectId);
-        return productMapper.selectList(projectId, keyword);
+        WmsItemListReqVO reqVO = new WmsItemListReqVO();
+        reqVO.setName(keyword);
+        return wmsItemService.getItemList(reqVO).stream().map(this::toProduct).toList();
     }
 
     @Override
     public void bindItemProduct(Long itemId, Long productId) {
         BomItemDO item = itemMapper.selectById(itemId);
         if (item == null) throw exception(BOM_ITEM_NOT_EXISTS);
-        ProjectProductDO product = productMapper.selectById(productId);
-        if (product == null) throw exception(PROJECT_PRODUCT_NOT_EXISTS);
-        BomVariantDO variant = validateVariant(item.getBomVariantId());
-        BomGroupVersionDO version = validateVersion(variant.getGroupVersionId());
-        BomGroupDO group = validateGroup(version.getGroupId());
-        if (!group.getProjectId().equals(product.getProjectId())) {
-            throw exception(PROJECT_PRODUCT_OWNER_MISMATCH);
-        }
+        wmsItemService.validateItemExists(productId);
         List<BomItemProductDO> relations = itemProductMapper.selectListByItemId(itemId);
         if (relations.stream().anyMatch(relation -> productId.equals(relation.getProductId()))) return;
         itemProductMapper.insert(BomItemProductDO.builder()
@@ -403,12 +405,27 @@ public class BomLibraryServiceImpl implements BomLibraryService {
             item.setImages(itemImageMapper.selectListByBomItemId(item.getId()));
             List<ProjectProductDO> products = new java.util.ArrayList<>();
             for (BomItemProductDO relation : itemProductMapper.selectListByItemId(item.getId())) {
-                ProjectProductDO product = productMapper.selectById(relation.getProductId());
-                if (product != null) products.add(product);
+                WmsItemDO product = wmsItemService.getItem(relation.getProductId());
+                if (product != null) products.add(toProduct(product));
             }
             item.setProducts(products);
         }
         return items;
+    }
+
+    /** WMS 商品是统一商品主档；项目 BOM 仅保存逻辑关联 ID。 */
+    private ProjectProductDO toProduct(WmsItemDO item) {
+        List<WmsItemSkuDO> skus = wmsItemSkuService.getItemSkuList(item.getId());
+        return ProjectProductDO.builder()
+                .id(item.getId())
+                .name(item.getName())
+                .merchant(item.getMerchant())
+                .price(skus.isEmpty() ? null : skus.get(0).getSellingPrice())
+                .purchaseUrl(item.getPurchaseUrl())
+                .imageUrls(item.getImageUrls())
+                .remark(item.getRemark())
+                .enabled(true)
+                .build();
     }
 
     @Override
