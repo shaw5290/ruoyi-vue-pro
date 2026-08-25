@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
+import org.dromara.autotable.annotation.ColumnType;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -60,6 +61,7 @@ public class DiyTemplateDO extends TenantBaseDO {
     /**
      * uni-app 底部导航属性，JSON 格式
      */
+    @ColumnType("text")
     private String property;
 
 }

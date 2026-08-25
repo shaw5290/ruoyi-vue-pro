@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
+import org.dromara.autotable.annotation.ColumnType;
 
 import java.util.List;
 
@@ -53,6 +54,7 @@ public class DiyPageDO extends TenantBaseDO {
     /**
      * 页面属性，JSON 格式
      */
+    @ColumnType("text")
     private String property;
 
 }
