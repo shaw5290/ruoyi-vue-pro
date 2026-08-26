@@ -86,6 +86,7 @@ public class ApiErrorLogDO extends TenantBaseDO {
     /**
      * 浏览器 UA
      */
+    @ColumnType("text")
     private String userAgent;
 
     // ========== 异常相关字段 ==========

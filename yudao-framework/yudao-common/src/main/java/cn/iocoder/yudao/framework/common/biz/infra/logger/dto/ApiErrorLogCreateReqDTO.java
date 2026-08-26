@@ -3,6 +3,8 @@ package cn.iocoder.yudao.framework.common.biz.infra.logger.dto;
 import lombok.Data;
 
 import jakarta.validation.constraints.NotNull;
+import org.dromara.autotable.annotation.ColumnType;
+
 import java.time.LocalDateTime;
 
 /**
@@ -54,6 +56,7 @@ public class ApiErrorLogCreateReqDTO {
     /**
      * 浏览器 UA
      */
+    @ColumnType("text")
     @NotNull(message = "User-Agent 不能为空")
     private String userAgent;
 

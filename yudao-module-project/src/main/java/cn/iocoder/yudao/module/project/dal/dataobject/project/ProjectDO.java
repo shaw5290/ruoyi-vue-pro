@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
@@ -30,6 +31,16 @@ public class ProjectDO extends TenantBaseDO {
     private String name;
     /** 项目说明 */
     private String description;
+    /** 项目分类 */
+    private String category;
+    /** 优先级：0 低，1 中，2 高 */
+    private Integer priority;
+    /** 执行阶段：0 规划，1 备料，2 制作，3 测试，4 暂停 */
+    private Integer stage;
+    /** 计划预算 */
+    private BigDecimal budget;
+    /** 综合进度，0-100 */
+    private Integer progress;
     /** 可见性：0 私有，1 公开 */
     private Integer visibility;
     /** 状态：0 进行中，1 已完成，2 已归档 */

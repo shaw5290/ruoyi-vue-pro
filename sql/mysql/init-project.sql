@@ -116,6 +116,8 @@ FROM (
     UNION ALL SELECT 'BOM 模块库维护', 'bom:library:write', 11
     UNION ALL SELECT '方案 BOM 查询', 'bom:selection:query', 12
     UNION ALL SELECT '方案 BOM 配置', 'bom:selection:write', 13
+    UNION ALL SELECT '项目任务查询', 'project:task:query', 14
+    UNION ALL SELECT '项目任务维护', 'project:task:write', 15
 ) permission_data
 WHERE NOT EXISTS (
     SELECT 1 FROM `system_menu` existing
@@ -132,7 +134,8 @@ WHERE `permission` IN (
     'project:info:query', 'project:info:create', 'project:info:update', 'project:info:delete',
     'project:solution:query', 'project:solution:create', 'project:solution:update',
     'project:solution:delete', 'project:solution:adopt',
-    'bom:library:query', 'bom:library:write', 'bom:selection:query', 'bom:selection:write'
+    'bom:library:query', 'bom:library:write', 'bom:selection:query', 'bom:selection:write',
+    'project:task:query', 'project:task:write'
 ) AND `deleted` = b'0';
 
 -- 4. 将项目权限映射到项目内置 BOM 权限
@@ -147,7 +150,7 @@ JOIN `system_menu` project_query
  AND project_query.`permission` = 'project:info:query'
  AND project_query.`deleted` = b'0'
 JOIN `system_menu` bom_query
-  ON bom_query.`permission` IN ('bom:library:query', 'bom:selection:query')
+  ON bom_query.`permission` IN ('bom:library:query', 'bom:selection:query', 'project:task:query')
  AND bom_query.`deleted` = b'0'
 WHERE project_grant.`deleted` = b'0'
   AND NOT EXISTS (
@@ -167,7 +170,7 @@ JOIN `system_menu` project_update
  AND project_update.`permission` = 'project:info:update'
  AND project_update.`deleted` = b'0'
 JOIN `system_menu` bom_write
-  ON bom_write.`permission` IN ('bom:library:write', 'bom:selection:write')
+  ON bom_write.`permission` IN ('bom:library:write', 'bom:selection:write', 'project:task:write')
  AND bom_write.`deleted` = b'0'
 WHERE project_grant.`deleted` = b'0'
   AND NOT EXISTS (

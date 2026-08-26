@@ -12,6 +12,9 @@ public interface ErrorCodeConstants {
     ErrorCode PROJECT_NOT_EXISTS = new ErrorCode(1_061_000_000, "项目不存在");
     ErrorCode PROJECT_CODE_DUPLICATE = new ErrorCode(1_061_000_001, "项目编号已存在");
     ErrorCode PROJECT_HAS_SOLUTION = new ErrorCode(1_061_000_002, "项目存在项目方案，不能删除");
+    ErrorCode PROJECT_HAS_TASK = new ErrorCode(1_061_000_003, "项目存在项目任务，不能删除");
+
+    ErrorCode PROJECT_TASK_NOT_EXISTS = new ErrorCode(1_061_005_000, "项目任务不存在");
 
     ErrorCode PROJECT_ATTACHMENT_NOT_EXISTS = new ErrorCode(1_061_010_000, "项目附件不存在");
     ErrorCode PROJECT_ATTACHMENT_BOM_GROUP_NOT_EXISTS = new ErrorCode(1_061_010_001, "附件所属 BOM 分组不存在");

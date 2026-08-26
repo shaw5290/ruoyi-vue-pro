@@ -16,6 +16,12 @@ public class ProjectPageReqVO extends PageParam {
     private String code;
     @Schema(description = "项目名称")
     private String name;
+    @Schema(description = "项目分类")
+    private String category;
+    @Schema(description = "优先级")
+    private Integer priority;
+    @Schema(description = "执行阶段")
+    private Integer stage;
     @Schema(description = "可见性")
     private Integer visibility;
     @Schema(description = "状态")

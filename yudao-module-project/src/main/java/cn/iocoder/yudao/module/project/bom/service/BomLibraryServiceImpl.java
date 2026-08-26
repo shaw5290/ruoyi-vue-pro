@@ -95,6 +95,7 @@ public class BomLibraryServiceImpl implements BomLibraryService {
         if (parentId.equals(groupId)) throw exception(BOM_GROUP_PARENT_INVALID);
         BomGroupDO parent = validateGroup(parentId);
         if (!projectId.equals(parent.getProjectId())) throw exception(BOM_GROUP_PARENT_INVALID);
+        if (DEFAULT_GROUP_CODE.equals(parent.getCode())) throw exception(BOM_GROUP_PARENT_INVALID);
         java.util.Set<Long> visited = new java.util.HashSet<>();
         while (parent != null) {
             if (!visited.add(parent.getId()) || parent.getId().equals(groupId)) {

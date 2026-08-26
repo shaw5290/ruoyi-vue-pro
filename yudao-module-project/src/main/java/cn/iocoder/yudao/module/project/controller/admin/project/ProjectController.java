@@ -4,6 +4,7 @@ import cn.iocoder.yudao.framework.common.pojo.CommonResult;
 import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.common.util.object.BeanUtils;
 import cn.iocoder.yudao.module.project.controller.admin.project.vo.ProjectPageReqVO;
+import cn.iocoder.yudao.module.project.controller.admin.project.vo.ProjectOverviewRespVO;
 import cn.iocoder.yudao.module.project.controller.admin.project.vo.ProjectRespVO;
 import cn.iocoder.yudao.module.project.controller.admin.project.vo.ProjectSaveReqVO;
 import cn.iocoder.yudao.module.project.dal.dataobject.project.ProjectDO;
@@ -65,6 +66,13 @@ public class ProjectController {
     public CommonResult<PageResult<ProjectRespVO>> getProjectPage(@Valid ProjectPageReqVO reqVO) {
         PageResult<ProjectDO> page = projectService.getProjectPage(reqVO);
         return success(BeanUtils.toBean(page, ProjectRespVO.class));
+    }
+
+    @GetMapping("/overview")
+    @Operation(summary = "获得项目概览统计")
+    @PreAuthorize("@ss.hasPermission('project:info:query')")
+    public CommonResult<ProjectOverviewRespVO> getProjectOverview(@RequestParam("id") Long id) {
+        return success(projectService.getProjectOverview(id));
     }
 
 }

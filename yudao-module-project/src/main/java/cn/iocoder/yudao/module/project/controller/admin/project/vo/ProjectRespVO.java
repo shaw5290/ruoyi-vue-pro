@@ -3,6 +3,7 @@ package cn.iocoder.yudao.module.project.controller.admin.project.vo;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -14,6 +15,11 @@ public class ProjectRespVO {
     private String code;
     private String name;
     private String description;
+    private String category;
+    private Integer priority;
+    private Integer stage;
+    private BigDecimal budget;
+    private Integer progress;
     private Integer visibility;
     private Integer status;
     private Long ownerUserId;

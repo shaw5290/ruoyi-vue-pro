@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.dromara.autotable.annotation.ColumnType;
 
 /**
  * 登录日志表
@@ -70,6 +71,7 @@ public class LoginLogDO extends TenantBaseDO {
     /**
      * 浏览器 UA
      */
+    @ColumnType("text")
     private String userAgent;
 
 }
